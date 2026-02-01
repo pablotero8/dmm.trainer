@@ -552,4 +552,6 @@
 		});
 	})();
 
+	// CTA Button functionality - removed to allow proper navigation to plan pages
+
 })(jQuery);
