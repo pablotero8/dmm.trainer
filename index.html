@@ -1,350 +1,402 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&display=swap" rel="stylesheet">
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700;900&display=swap" rel="stylesheet">
+        <title>DMM TRAINER</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        
+        <style>
+            /* --- SISTEMA VISUAL DMM TRAINER: ELITE PERFORMANCE V23 (FINAL TWEAKS) --- */
+            :root {
+                --bg-tech: rgb(83, 102, 126); 
+                --text-dark: #f0f0f0; 
+                --accent-dark: #000000;
+                --neon-green: #ccff00; 
+                --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            }
 
-		<title>DMM TRAINER</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+            body {
+                background-color: var(--bg-tech);
+                color: var(--text-dark);
+                font-family: 'Josefin Slab', serif;
+                margin: 0;
+                overflow-x: hidden;
+            }
 
-		<!-- Header: barra superior negra centrada -->
-		<header id="custom-header">
-			<div class="header-left">
-				<img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img">
-				<span class="header-text">DMM TRAINER USA</span>
-			</div>
-		<button class="hamburger-menu" aria-label="Menu" id="hamburger-btn">
-			<span></span>
-			<span></span>
-			<span></span>
-		</button>
-	</header>
+            /* --- HEADER SUPERIOR --- */
+            #custom-header {
+                background: rgba(0, 0, 0, 0.95); 
+                backdrop-filter: blur(10px);
+                padding: 15px 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                top: 0; width: 100%; z-index: 2000;
+                box-sizing: border-box;
+                border-bottom: 2px solid var(--neon-green); 
+            }
 
-	<!-- Mobile Menu -->
-	<div class="mobile-menu" id="mobile-menu">
-		<ul class="mobile-menu-links">
-			<li class="active"><a href="index.html">HOME</a></li>
-			<li><a href="services.html">MY PLANS</a></li>
-			<li><a href="about.html">ABOUT</a></li>
-			<li><a href="faq.html">FAQ</a></li>
-		</ul>
-	</div>
+            .logo-img { height: 40px; } 
+            .header-text { font-weight: 700; letter-spacing: 2px; color: var(--neon-green); }
+            #hamburger-btn span { background: var(--neon-green) !important; }
 
-	
-<!-- Intro -->
-	<div id="intro" class="has-bg">
-		<img src="images/dmm.logo.white.png" alt="DMM Logo" class="intro-logo">
-		<h1><span class="intro-line line-1">DMM <br>TRAINER</span><br />
-		<img src="images/us-flag.svg" alt="USA flag" class="intro-flag" />
-		<!--span class="intro-line line-2 indent">HABITS</span></h1-->
-		<p><span class="intro-line line-3">STRONGER + FASTER = WINNER</span></p>
-		<!--p> Elevated lifestyle</p-->
-		<!--ul class="actions">
-			<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-		</ul-->
-	</div>
+            /* --- INTRO SECTION --- */
+            #intro {
+                height: 100vh; width: 100%; display: flex; flex-direction: column;
+                justify-content: center; align-items: center; text-align: center;
+                color: white; position: fixed; top: 0; left: 0; z-index: 1; 
+                background-color: var(--bg-tech); --intro-opacity: 1; 
+            }
+            #intro::before {
+                content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.6); z-index: 2; opacity: var(--intro-opacity); will-change: opacity;
+            }
+            #intro::after {
+                content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                background-image: url('images/gym.2.jpg'); background-size: cover; background-position: center;
+                z-index: 1; opacity: var(--intro-opacity); will-change: opacity;
+            }
+            #intro * { z-index: 3; position: relative; }
 
-	<!-- INSTAGRAM -->
-	<div id="location-badge">
-		<div class="divider"></div>
-		<p><a href="https://www.instagram.com/dmm.trainer/" target="_blank"><i class="icon brands fa-instagram"></i>@DMM.TRAINER</a></p>
-		<div class="divider"></div>
-	</div>
-	
-	<!-- Wrapper -->
-	<div id="wrapper" class="fade-in">
+            /* Animaciones Intro */
+            .intro-logo { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)); will-change: transform, opacity; transform-origin: center center; }
+            
+            .intro-line.line-1 { 
+                font-size: clamp(3rem, 10vw, 6rem); 
+                font-weight: 900; line-height: 0.9; text-transform: uppercase; will-change: transform;
+                color: #ffffff; text-shadow: 2px 2px 10px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,0.7);
+            }
 
-			<!-- Daily/Weekly/Monthly Plans Intro -->
-			<div class="plans-intro-container">
-				<img src="images/DMM.DIEGO.png" alt="Diego Martin Mendez">
-				<div>
-					<p class="plans-intro plans-intro-animated">◆ Welcome to DMM trainer by Diego Martin Mendez</p>
-					<p class="plans-intro plans-intro-animated">◆ Online Personal Training</p>
-					<p class="plans-intro plans-intro-animated">◆ Licensed in Sport and Physical Activity Sciences</p>
-					<p class="plans-intro plans-intro-animated">◆ Specialized in Racket Sports</p>
-				</div>
-			</div>
+            .intro-flag { width: 45px; margin: 20px 0; will-change: transform; }
+            .intro-line.line-3 { font-size: clamp(1.5rem, 5vw, 3.5rem); letter-spacing: 8px; font-weight: 700; text-shadow: 3px 3px 10px rgba(0,0,0,0.8); color: #ffffff; display: block; margin-top: 15px; will-change: transform; }
 
-		<!-- My Plans Button -->
-		<div class="my-plans-button-container">
-			<div class="button" onclick="window.location.href='services.html'">
-				<p>my plans</p>
-			</div>
-		</div>
+            /* --- WRAPPER INVASOR --- */
+            #wrapper { 
+                background-color: var(--bg-tech); 
+                margin-top: calc(100vh + 100px); position: relative; z-index: 2;
+            }
+            #wrapper::before {
+                content: ''; position: absolute; top: -100px; left: 0; width: 100%; height: 100px; 
+                background: linear-gradient(to bottom, rgba(83, 102, 126, 0) 0%, rgba(83, 102, 126, 1) 100%);
+                pointer-events: none; z-index: 2;
+            }
 
-		<!-- Motivational Banner -->
-		<div class="motivational-banner">
-			<p><i>If you believe in yourself, you can see your future</i></p>
-		</div>
+            /* Bio */
+            .plans-intro-container {
+                display: flex; flex-direction: column; align-items: center; justify-content: center;
+                gap: 50px; padding: 80px 5% 40px 5%; text-align: center; 
+            }
+            .plans-intro-container img { 
+                width: 100%; max-width: 500px; 
+                filter: drop-shadow(0 0 4px var(--neon-green)) drop-shadow(15px 15px 30px rgba(0,0,0,0.5)); 
+                transition: var(--transition);
+            }
+            .plans-intro-container img:hover { 
+                filter: drop-shadow(0 0 8px var(--neon-green)) drop-shadow(15px 15px 30px rgba(0,0,0,0.6));
+                transform: scale(1.03) translateY(-5px); 
+            }
+            .plans-intro-text-wrapper { max-width: 1000px; }
 
-	<!-- Testimonials Carousel -->
-	<section class="testimonials-section">
-		<h2 class="testimonials-title">WHAT MY CLIENTS SAY</h2>
-		
-		<div class="testimonials-wrapper">
-			<div class="testimonials-track">
-				<!-- Primera ronda -->
-				<div class="testimonials-page">
-					<div class="testimonial-card">
-						<div class="testimonial-info">
-							<h4 class="testimonial-name">Miguel Briega</h4>
-							<p class="testimonial-text">"Since I started with Diego, my transformation has been incredible. His dedication and professionalism are unmatched. Now I have the energy and physical fitness I always wanted."</p>
-						</div>
-						<img src="images/BRIEGA.JPG" alt="Miguel Briega" class="testimonial-photo">
-					</div>
-					
-					<div class="testimonial-card">
-						<div class="testimonial-info">
-							<h4 class="testimonial-name">Guillermo Cagigas</h4>
-							<p class="testimonial-text">"Diego's hybrid program adapts perfectly to my lifestyle. In just a few months, I've seen remarkable changes in my body and health. Highly recommended."</p>
-						</div>
-						<img src="images/CAGIGAS.JPG" alt="Guillermo Cagigas" class="testimonial-photo">
-					</div>
-					
-					<div class="testimonial-card">
-						<div class="testimonial-info">
-							<h4 class="testimonial-name">Marta Morga</h4>
-							<p class="testimonial-text">"Diego is an exceptional trainer. His attention to detail and continuous motivation have helped me achieve my goals. The best investment in my well-being."</p>
-						</div>
-						<img src="images/MARTA.JPG" alt="Marta Morga" class="testimonial-photo">
-					</div>
-				</div>
-				
-				<!-- Segunda ronda (duplicado para loop infinito) -->
-				<div class="testimonials-page">
-					<div class="testimonial-card">
-						<div class="testimonial-info">
-							<h4 class="testimonial-name">Miguel Briega</h4>
-							<p class="testimonial-text">"Since I started with Diego, my transformation has been incredible. His dedication and professionalism are unmatched. Now I have the energy and physical fitness I always wanted."</p>
-						</div>
-						<img src="images/BRIEGA.JPG" alt="Miguel Briega" class="testimonial-photo">
-					</div>
-					
-					<div class="testimonial-card">
-						<div class="testimonial-info">
-							<h4 class="testimonial-name">Guillermo Cagigas</h4>
-							<p class="testimonial-text">"Diego's hybrid program adapts perfectly to my lifestyle. In just a few months, I've seen remarkable changes in my body and health. Highly recommended."</p>
-						</div>
-						<img src="images/CAGIGAS.JPG" alt="Guillermo Cagigas" class="testimonial-photo">
-					</div>
-					
-					<div class="testimonial-card">
-						<div class="testimonial-info">
-							<h4 class="testimonial-name">Marta Morga</h4>
-							<p class="testimonial-text">"Diego is an exceptional trainer. His attention to detail and continuous motivation have helped me achieve my goals. The best investment in my well-being."</p>
-						</div>
-						<img src="images/MARTA.JPG" alt="Marta Morga" class="testimonial-photo">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+            /* --- ESTILOS BASE DE TEXTO --- */
+            .plans-intro {
+                border-left: none; margin-bottom: 25px; font-weight: 700; 
+                letter-spacing: 2px; line-height: 1.2;
+            }
 
-	<!-- Author Banner -->
-	<div class="motivational-banner">
-		<p><i>by diego martin mendez</i></p>
-	</div>
+            /* --- TÍTULO PRINCIPAL (Caja Negra/Neón) --- */
+            .plans-intro:first-child {
+                font-size: 1.8rem; text-transform: uppercase; margin-top: 20px; 
+                margin-bottom: 40px; 
+                color: var(--neon-green); background-color: #000000;
+                display: inline-block; 
+                padding: 15px 30px; 
+                position: relative;
+                box-shadow: 0 0 20px rgba(204, 255, 0, 0.2); border-radius: 0;
+                border: 2px solid var(--neon-green); 
+            }
+            /* CAMBIO V23: Mayor separación entre líneas */
+            .plans-intro:first-child span { 
+                display: block; 
+                line-height: 1.6; /* Aumentado para separar el texto */
+            }
 
-	<!-- About Me Button -->
-	<div class="my-plans-button-container">
-		<div class="button" onclick="window.location.href='about.html'">
-			<p>about me</p>
-		</div>
-	</div>
+            /* --- BULLETPOINTS GIGANTES --- */
+            .plans-intro:not(:first-child) {
+                font-size: 3.8rem; font-weight: 900; color: #000000; 
+                text-shadow: 2px 2px 4px rgba(204, 255, 0, 0.4); margin-bottom: 35px; line-height: 1.1;
+            }
+            .neon-bullet {
+                color: var(--neon-green); text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+                margin-right: 20px; font-size: 3rem; vertical-align: middle;
+            }
 
-	<!-- Gallery Carousel -->
-	<section class="gallery-section">
-		<h2 class="gallery-title">GALLERY</h2>
-		
-		<div class="gallery">
-			<figure>
-				<img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Gallery 1">
-				<figcaption>
-					<h3>Training Session</h3>
-					<p>Fitness and strength training moments</p>
-				</figcaption>
-			</figure>
+            /* Botón Mega */
+            .my-plans-button-container { text-align: center; margin: 20px 0 100px 0; }
+            .btn-mega {
+                background: var(--neon-green); color: #000000; padding: 30px 100px;
+                font-size: 2.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 8px;
+                border: 2px solid #000000; border-radius: 4px; cursor: pointer; transition: all 0.3s ease-in-out;
+                box-shadow: 0 0 30px rgba(204, 255, 0, 0.5); animation: neonPulse 2s infinite;
+            }
+            .btn-mega:hover {
+                background: #000000; color: var(--neon-green); border-color: var(--neon-green);
+                box-shadow: 0 0 60px rgba(204, 255, 0, 0.9); transform: translateY(-5px) scale(1.05);
+            }
+            @keyframes neonPulse {
+                0%, 100% { box-shadow: 0 0 30px rgba(204, 255, 0, 0.5); }
+                50% { box-shadow: 0 0 60px rgba(204, 255, 0, 0.8); }
+            }
 
-			<figure>
-				<img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Gallery 2">
-				<figcaption>
-					<h3>Client Results</h3>
-					<p>Amazing transformation stories</p>
-				</figcaption>
-			</figure>
+            /* --- CARRUSEL DE TESTIMONIOS (Fondo Negro + Bordes Neón) --- */
+            .testimonials-section { 
+                padding: 100px 0; background: #050505; overflow: hidden;
+                /* CAMBIO V23: Bordes superior e inferior neón */
+                border-top: 3px solid var(--neon-green);
+                border-bottom: 3px solid var(--neon-green);
+            }
+            .testimonials-title { text-align: center; letter-spacing: 5px; color: #ffffff; font-size: 2.5rem; margin-bottom: 60px; }
+            .testimonials-track { display: flex; width: max-content; animation: scroll 35s linear infinite; }
+            .testimonials-track:hover { animation-play-state: paused; }
+            .testimonial-card {
+                background: #000000; padding: 40px; margin: 0 25px; width: 750px; 
+                border: 3px solid var(--neon-green); display: flex; flex-direction: row; 
+                align-items: center; justify-content: space-between; gap: 50px; 
+                box-shadow: 0 10px 40px rgba(0,0,0,0.6); transition: var(--transition);
+            }
+            .testimonial-text-wrapper { flex: 1; text-align: left; }
+            .testimonial-quote { color: var(--neon-green); font-size: 1.3rem; line-height: 1.5; font-style: italic; margin-bottom: 25px; }
+            .testimonial-name { color: #ffffff; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+            .testimonial-photo { width: 200px; height: 300px; border-radius: 5px; object-fit: cover; border: 4px solid var(--neon-green); filter: grayscale(0.3); flex-shrink: 0; }
+            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-2400px); } }
 
-			<figure>
-				<img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gallery 3">
-				<figcaption>
-					<h3>Gym Sessions</h3>
-					<p>Personal training at its best</p>
-				</figcaption>
-			</figure>
+            /* --- NUEVA GALERÍA: DOBLE CARRUSEL VERTICAL --- */
+            .gallery-section { background-color: var(--bg-tech); padding-bottom: 100px; overflow: hidden; position: relative; }
+            .gallery-section .testimonials-title { color: #000000; margin-top: 50px; padding-top: 0; font-weight: 800; }
 
-			<figure>
-				<img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Gallery 4">
-				<figcaption>
-					<h3>Workout Time</h3>
-					<p>Dedicated training moments</p>
-				</figcaption>
-			</figure>
+            .gallery-container { display: flex; flex-direction: column; gap: 30px; position: relative; }
 
-			<figure>
-				<img src="images/4d3f8fcc-cacc-4118-90f6-a36f68b31f6d.JPG" alt="Gallery 5">
-				<figcaption>
-					<h3>Equipment</h3>
-					<p>Professional gym equipment</p>
-				</figcaption>
-			</figure>
+            .gallery-container::before, .gallery-container::after {
+                content: ''; position: absolute; top: 0; width: 150px; height: 100%; z-index: 5; pointer-events: none;
+            }
+            .gallery-container::before { left: 0; background: linear-gradient(to right, rgb(83, 102, 126) 0%, transparent 100%); }
+            .gallery-container::after { right: 0; background: linear-gradient(to left, rgb(83, 102, 126) 0%, transparent 100%); }
 
-			<figure>
-				<img src="images/72a98ca5-305c-447e-84da-6655744389fd.JPG" alt="Gallery 6">
-				<figcaption>
-					<h3>Training Techniques</h3>
-					<p>Advanced training methods</p>
-				</figcaption>
-			</figure>
+            .gallery-track { display: flex; gap: 30px; width: max-content; }
+            .gallery-track.left { animation: scroll-gallery-left 40s linear infinite; }
+            .gallery-track.right { animation: scroll-gallery-right 40s linear infinite; }
+            .gallery-track:hover { animation-play-state: paused; }
 
-			<figure>
-				<img src="images/9361a6d1-55c9-410c-aaa5-9b1d5d34bbc5.JPG" alt="Gallery 7">
-				<figcaption>
-					<h3>Performance</h3>
-					<p>Peak athletic performance</p>
-				</figcaption>
-			</figure>
+            /* CAMBIO V23: Tarjetas verticales */
+            .gallery-item {
+                width: 350px; /* Más estrecho */
+                height: 500px; /* Más alto (Vertical) */
+                border-radius: 4px; overflow: hidden;
+                border: 2px solid #000; transition: var(--transition); background: #000;
+            }
+            .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 
-			<figure>
-				<img src="images/aa725a4b-717c-4fd9-ae58-5e311ba06ed4.JPG" alt="Gallery 8">
-				<figcaption>
-					<h3>Dedication</h3>
-					<p>Commitment to fitness</p>
-				</figcaption>
-			</figure>
+            .gallery-item:hover {
+                border-color: var(--neon-green);
+                box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+                transform: scale(1.02); z-index: 10;
+            }
+            .gallery-item:hover img { transform: scale(1.1); }
 
-			<figure>
-				<img src="images/b5ca207b-351c-47ae-9a25-d1685848df16.JPG" alt="Gallery 9">
-				<figcaption>
-					<h3>Results</h3>
-					<p>Success and transformation</p>
-				</figcaption>
-			</figure>
+            @keyframes scroll-gallery-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+            @keyframes scroll-gallery-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
-			<figure>
-				<img src="images/d2153785-60e5-4c05-aea8-28cd06ca883b.JPG" alt="Gallery 10">
-				<figcaption>
-					<h3>Coach Training</h3>
-					<p>Professional coaching sessions</p>
-				</figcaption>
-			</figure>
+            /* Footer */
+            #footer { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; background: #050505; border-top: 3px solid var(--neon-green); color: #ffffff; }
+            #footer h2, #footer h3 { color: var(--neon-green); }
+            #footer input, #footer textarea { width: 100%; background: #111; border: 1px solid #333; color: var(--neon-green); padding: 15px; margin-bottom: 20px; font-family: inherit; font-weight: 700; transition: all 0.3s ease; }
+            #footer input:focus, #footer textarea:focus { border-color: var(--neon-green); outline: none; box-shadow: 0 0 15px rgba(204, 255, 0, 0.2); }
+            #footer .button { background: var(--neon-green); color: black; padding: 15px 40px; display: inline-block; cursor: pointer; text-transform: uppercase; letter-spacing: 3px; border: none; font-weight: 800; transition: var(--transition); }
+            #footer .button:hover { background: white; box-shadow: 0 0 20px var(--neon-green); }
 
-			<figure>
-				<img src="images/d8847510-e190-4933-aaae-584b964b9f5c.JPG" alt="Gallery 11">
-				<figcaption>
-					<h3>Fitness Goals</h3>
-					<p>Achieving your goals</p>
-				</figcaption>
-			</figure>
+            @media (max-width: 768px) {
+                #footer { grid-template-columns: 1fr; }
+                .plans-intro:first-child { font-size: 1.4rem; padding: 12px 20px; }
+                .plans-intro:not(:first-child) { font-size: 2.2rem; } 
+                .neon-bullet { font-size: 1.8rem; margin-right: 10px; }
 
-			<figure>
-				<img src="images/e9866413-acb7-4766-9517-4e17fd137191.jpg" alt="Gallery 12">
-				<figcaption>
-					<h3>Success Stories</h3>
-					<p>Client testimonials in action</p>
-				</figcaption>
-			</figure>
-		</div>
-	</section>
+                .btn-mega { padding: 20px 30px; font-size: 1.5rem; }
+                .testimonial-card { width: 320px; flex-direction: column; text-align: center; padding: 30px; gap: 30px; }
+                .testimonial-text-wrapper { text-align: center; }
+                .testimonial-photo { width: 150px; height: 220px; }
+                
+                /* CAMBIO V23: Ajuste vertical móvil */
+                .gallery-item { width: 250px; height: 350px; }
+                
+                .gallery-container::before, .gallery-container::after { width: 50px; }
+            }
+        </style>
+    </head>
+    <body>
 
-	<!-- Get In Touch Button -->
-	<div class="my-plans-button-container">
-		<div class="button" onclick="document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' })">
-			<p>get in touch</p>
-		</div>
-	</div>
+        <header id="custom-header">
+            <div class="header-left">
+                <img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img">
+                <span class="header-text">DMM TRAINER USA</span>
+            </div>
+            <button class="hamburger-menu" id="hamburger-btn" style="background:none; border:none; cursor:pointer;">
+                <span style="display:block; width:30px; height:3px; background:black; margin:6px;"></span>
+                <span style="display:block; width:30px; height:3px; background:black; margin:6px;"></span>
+                <span style="display:block; width:30px; height:3px; background:black; margin:6px;"></span>
+            </button>
+        </header>
 
-	<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li class="active"><a href="index.html">HOME</a></li>
-					<li><a href="services.html">MY PLANS</a></li>
-					<li><a href="about.html">ABOUT</a></li>
-					<li><a href="faq.html">FAQ</a></li>
-				</ul>
+        <div id="intro">
+            <img src="images/dmm.logo.white.png" alt="DMM Logo" class="intro-logo" id="anim-logo">
+            <h1 id="anim-title"><span class="intro-line line-1">DMM <br>TRAINER</span></h1>
+            <img src="images/us-flag.svg" alt="USA flag" class="intro-flag" id="anim-flag" />
+            <p id="anim-subtitle"><span class="intro-line line-3">STRONGER + FASTER = WINNER</span></p>
+        </div>
 
-				<ul class="icons">
-					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-				<li><a href="https://www.instagram.com/dmm.trainer/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="https://wa.me/34628801736" target="_blank" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>				<li><a href="https://wa.me/34628801736" target="_blank" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>				</ul>
-			</nav>
+        <div id="wrapper">
 
-		<!-- Footer -->
-			<footer id="footer" id="contact-section">
-				<section>
-					<form method="post" action="https://formsubmit.co/dmmpersonaltrainer@gmail.com">
-						<div class="fields">
-							<div class="field">
-								<label for="name">Name</label>
-								<input type="text" name="name" id="name" required/>
-							</div>
-							<div class="field">
-								<label for="email">Email</label>
-								<input type="email" name="email" id="email" required/>
-							</div>
-							<div class="field">
-								<label for="message">Message</label>
-								<textarea name="message" id="message" rows="3" required></textarea>
-							</div>
-						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Send Message" /></li>
-						</ul>
-					</form>
-				</section>
-				<section class="split contact">
-				
-					<section>
-						<h3>Phone</h3>
-						<p><a href="#">+34 628 801 736</a></p>
-					</section>
-					<section>
-						<h3>Email</h3>
-						<p><a href="#">dmmpersonaltrainer@gmail.com</a></p>
-					</section>
-					<section>
-						<h3>Social</h3>
-						<ul class="icons alt">
-							
-							<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="https://www.instagram.com/dmm.trainer/" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="https://wa.me/34628801736" target="_blank" class="icon brands alt fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-							
-						</ul>
-					</section>
-				</section>
-			</footer>
-					<div id="copyright">
-						<ul><li>&copy; DMM TRAINER</li><li>2026 </li></ul>
-					</div>
+            <div class="plans-intro-container">
+                <img src="images/DMM.DIEGO.png" alt="Diego Martin Mendez">
+                <div class="plans-intro-text-wrapper">
+                    <p class="plans-intro"><span>Welcome to DMM trainer,<br> by Diego Martin Mendez</span></p>
+                    
+                    <p class="plans-intro"><span class="neon-bullet">◆</span> Online Personal Training</p>
+                    <p class="plans-intro"><span class="neon-bullet">◆</span> Licensed in Sport and Physical Activity Sciences</p>
+                    <p class="plans-intro"><span class="neon-bullet">◆</span> Specialized in Racket Sports</p>
+                </div>
+            </div>
 
-			</div>
+            <div class="my-plans-button-container">
+                <button class="btn-mega" onclick="window.location.href='services.html'">my plans</button>
+            </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+            <section class="testimonials-section">
+                <h2 class="testimonials-title">WHAT MY CLIENTS SAY</h2>
+                <div class="testimonials-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text-wrapper">
+                            <p class="testimonial-quote">"Since I started with Diego, my transformation has been incredible. His dedication and professionalism are unmatched."</p>
+                            <h4 class="testimonial-name">Miguel Briega</h4>
+                        </div>
+                        <img src="images/BRIEGA.JPG" alt="" class="testimonial-photo">
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text-wrapper">
+                            <p class="testimonial-quote">"Diego's hybrid program adapts perfectly to my lifestyle. In just a few months, I've seen remarkable changes."</p>
+                            <h4 class="testimonial-name">Guillermo Cagigas</h4>
+                        </div>
+                        <img src="images/CAGIGAS.JPG" alt="" class="testimonial-photo">
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text-wrapper">
+                            <p class="testimonial-quote">"Diego is an exceptional trainer. His attention to detail and continuous motivation is the best investment in my health."</p>
+                            <h4 class="testimonial-name">Marta Morga</h4>
+                        </div>
+                        <img src="images/MARTA.JPG" alt="" class="testimonial-photo">
+                    </div>
 
-	</body>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text-wrapper">
+                            <p class="testimonial-quote">"Since I started with Diego, my transformation has been incredible. His dedication and professionalism are unmatched."</p>
+                            <h4 class="testimonial-name">Miguel Briega</h4>
+                        </div>
+                        <img src="images/BRIEGA.JPG" alt="" class="testimonial-photo">
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text-wrapper">
+                            <p class="testimonial-quote">"Diego's hybrid program adapts perfectly to my lifestyle. In just a few months, I've seen remarkable changes."</p>
+                            <h4 class="testimonial-name">Guillermo Cagigas</h4>
+                        </div>
+                        <img src="images/CAGIGAS.JPG" alt="" class="testimonial-photo">
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-text-wrapper">
+                            <p class="testimonial-quote">"Diego is an exceptional trainer. His attention to detail and continuous motivation is the best investment in my health."</p>
+                            <h4 class="testimonial-name">Marta Morga</h4>
+                        </div>
+                        <img src="images/MARTA.JPG" alt="" class="testimonial-photo">
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery-section">
+                <h2 class="testimonials-title">GALLERY</h2>
+                
+                <div class="gallery-container">
+                    <div class="gallery-track left">
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
+                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
+                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
+                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
+                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
+                    </div>
+
+                    <div class="gallery-track right">
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
+                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
+                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
+                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
+                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer">
+                <section>
+                    <h2 style="letter-spacing:3px; font-size:2rem;">GET IN TOUCH</h2>
+                    <form method="post" action="https://formsubmit.co/dmmpersonaltrainer@gmail.com">
+                        <input type="text" name="name" placeholder="Name" required/>
+                        <input type="email" name="email" placeholder="Email" required/>
+                        <textarea name="message" placeholder="Message" rows="4" required></textarea>
+                        <input type="submit" value="Send Message" class="button" style="width:auto;"/>
+                    </form>
+                </section>
+                <section class="split contact" style="font-size: 1.2rem;">
+                    <div style="margin-top: 30px;">
+                        <h3>Email</h3>
+                        <h3 style="margin-top:0;"><a href="mailto:dmmpersonaltrainer@gmail.com" style="color:var(--neon-green); text-decoration:none;">dmmpersonaltrainer@gmail.com</a></h3>
+                        
+                        <h3 style="margin-top:40px;">Phone</h3>
+                        <h3 style="margin-top:0;"><a href="tel:+34628801736" style="color:var(--neon-green); text-decoration:none;">+34 628 801 736</a></h3>
+                        
+                        <p style="margin-top: 60px; opacity:0.6; font-size: 0.9rem; color:white;">© DMM TRAINER 2026</p>
+                    </div>
+                </section>
+            </footer>
+        </div>
+
+        <script>
+            const introSection = document.getElementById('intro');
+            const logo = document.getElementById('anim-logo');
+            const title = document.getElementById('anim-title');
+            const flag = document.getElementById('anim-flag');
+            const subtitle = document.getElementById('anim-subtitle');
+
+            window.addEventListener('scroll', () => {
+                let scrollY = window.scrollY;
+                let windowHeight = window.innerHeight;
+                let fadeRate = scrollY / (windowHeight * 0.65); 
+                let newOpacity = 1 - fadeRate;
+                if (newOpacity < 0) newOpacity = 0; if (newOpacity > 1) newOpacity = 1;
+
+                introSection.style.setProperty('--intro-opacity', newOpacity);
+
+                if (scrollY < windowHeight) {
+                    let logoScale = 1 + (scrollY * 0.005); 
+                    logo.style.transform = `scale(${logoScale})`; logo.style.opacity = newOpacity;
+                    let parallaxSpeed = scrollY * 0.3;
+                    title.style.transform = `translateY(${parallaxSpeed}px)`; title.style.opacity = newOpacity;
+                    flag.style.transform = `translateY(${parallaxSpeed}px)`; flag.style.opacity = newOpacity;
+                    subtitle.style.transform = `translateY(${parallaxSpeed}px)`; subtitle.style.opacity = newOpacity;
+                }
+            });
+        </script>
+    </body>
 </html>

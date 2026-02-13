@@ -1,223 +1,420 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&display=swap" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-		<title>DMM TRAINER - My Plans</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700;900&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>DMM TRAINER - My Plans</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        
+        <style>
+            :root {
+                --bg-tech: rgb(83, 102, 126); 
+                --text-dark: #f0f0f0; 
+                --accent-dark: #000000;
+                --neon-green: #ccff00; 
+                --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
 
-		<!-- Header: barra superior negra centrada -->
-		<header id="custom-header">
-			<div class="header-left">
-				<a href="index.html"><img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img"></a>
-				<span class="header-text">DMM TRAINER USA</span>
-			</div>
-			<button class="hamburger-menu" aria-label="Menu" id="hamburger-btn">
-				<span></span>
-				<span></span>
-				<span></span>
-			</button>
-		</header>
+            body.is-preload * { transition: none !important; }
 
-	<!-- Mobile Menu -->
-	<div class="mobile-menu" id="mobile-menu">
-		<ul class="mobile-menu-links">
-			<li><a href="index.html">HOME</a></li>
-			<li class="active"><a href="services.html">MY PLANS</a></li>
-			<li><a href="about.html">ABOUT</a></li>
-			<li><a href="faq.html">FAQ</a></li>
-		</ul>
-	</div>
+            body {
+                background-color: var(--bg-tech) !important;
+                color: var(--text-dark);
+                font-family: 'Josefin Slab', serif;
+                margin: 0;
+                overflow-x: hidden;
+            }
 
-	
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+            /* --- HEADER SUPERIOR --- */
+            #custom-header {
+                background: rgba(0, 0, 0, 0.95); 
+                backdrop-filter: blur(10px);
+                padding: 15px 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                top: 0; width: 100%; z-index: 2000;
+                box-sizing: border-box;
+                border-bottom: 2px solid var(--neon-green); 
+            }
+            .header-left { display: flex; align-items: center; gap: 15px; }
+            .header-left a { text-decoration: none; display: flex; align-items: center; }
+            .logo-img { height: 40px; } 
+            .header-text { font-weight: 700; letter-spacing: 2px; color: var(--neon-green); font-size: 1rem;}
+            
+            #hamburger-btn {
+                background: none; border: none; cursor: pointer; padding: 0;
+                display: flex; flex-direction: column; gap: 6px;
+            }
+            #hamburger-btn span { 
+                display: block; width: 30px; height: 3px; background: var(--neon-green); 
+            }
 
-				<!-- Nav -->
-				<nav id="nav">
-					<ul class="links">
-						<li><a href="index.html">HOME</a></li>
-					<li class="active"><a href="services.html">MY PLANS</a></li>
-					</ul>
+            /* --- MENU MÓVIL ESTILO ELITE --- */
+            #mobile-menu {
+                background: rgba(0,0,0,0.98);
+                border-bottom: 2px solid var(--neon-green);
+                position: fixed; top: 72px; width: 100%; z-index: 1999;
+                display: none; /* ¡CORREGIDO! Ahora sí está oculto por defecto */
+            }
+            .mobile-menu-links { list-style: none; padding: 20px; text-align: center; margin: 0; }
+            .mobile-menu-links li { margin-bottom: 15px; }
+            .mobile-menu-links a { color: #fff; text-decoration: none; font-size: 1.2rem; font-weight: 700; transition: var(--transition); letter-spacing: 2px;}
+            .mobile-menu-links a:hover, .mobile-menu-links li.active a { color: var(--neon-green); }
 
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-					</ul>
-				</nav>
+            /* --- WRAPPER --- */
+            #wrapper { 
+                background-color: var(--bg-tech) !important; 
+                padding-top: 120px; 
+                padding-bottom: 80px;
+                position: relative; z-index: 2;
+            }
 
-				<div class="divider"></div>
+            /* Ocultar navegación original que choca con el diseño */
+            #nav, .divider { display: none !important; }
+            
+            /* --- SECCIÓN PRINCIPAL DE PLANES --- */
+            #services { padding: 40px 0; }
 
-				<!-- Services Section -->
-				<section id="services">
-					<article class="post featured">
-						<header class="major">
-							<h2 class="services-title">TRAINING PLANS</h2>
-							<p style="color: #000000;">Choose the plan that best fits your goals, schedule, and level.</p>
-						</header>
-					</article>
+            .services-title {
+                text-align: center; letter-spacing: 5px; color: #000000; 
+                font-size: 3.5rem; font-weight: 900; margin-bottom: 20px;
+                text-shadow: 2px 2px 0px rgba(255,255,255,0.1);
+                text-transform: uppercase;
+            }
+            .post.featured header.major p {
+                text-align: center; font-size: 1.6rem; font-weight: 800; margin-bottom: 80px;
+                color: #000000 !important; 
+            }
 
-					<!-- Plan 1: Image Left, Text Right -->
-					<div class="container-fluid position-relative half-fluid plan-section">
-						<div class="container">
-							<div class="row align-items-center">
-								<!-- Image -->
-								<div class="col-lg-6 position-lg-absolute left-half h-100">
-									<div class="plan-image" style="background-image: url('images/72a98ca5-305c-447e-84da-6655744389fd.JPG');"></div>
-								</div>
-								<!-- Text -->
-								<div class="col-lg-6 offset-lg-6 py-5 ps-lg-5">
-									<h1 class="plan-title">Performance Base</h1>
-									<p class="plan-price-text">$500 · 8 weeks</p>
-									<p class="plan-description">Designed for people who want to improve overall health, general fitness, and performance without the need to compete.</p>
-									<p class="plan-ideal"><strong>Ideal for:</strong> Active people, recreational players, or athletes who want to feel stronger, faster, and with fewer aches.</p>
-									<a href="plan1.html" class="cta-button">Learn More</a>
-								</div>
-							</div>
-						</div>
-					</div>
+            /* --- CAJAS DE PLANES (CYBER-CARDS) --- */
+            .plan-section {
+                background: #050505; 
+                max-width: 1100px; 
+                margin: 0 auto 80px auto !important; 
+                border: 2px solid #222; 
+                border-radius: 12px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+                transition: var(--transition);
+                overflow: hidden; 
+            }
 
-					<!-- Plan 2: Image Right, Text Left -->
-					<div class="container-fluid position-relative half-fluid plan-section">
-						<div class="container">
-							<div class="row align-items-center">
-								<!-- Image -->
-								<div class="col-lg-6 position-lg-absolute right-half h-100">
-									<div class="plan-image" style="background-image: url('images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG');"></div>
-								</div>
-								<!-- Text -->
-								<div class="col-lg-6 py-5 pe-lg-5">
-									<h1 class="plan-title">Padel Performance Program</h1>
-									<p class="plan-price-text">$600 · 12 weeks</p>
-									<p class="plan-description">100% padel-specific program focused on performance on court.</p>
-									<p class="plan-ideal"><strong>Ideal for:</strong> Competitive players who want to raise their level and perform better in matches and tournaments.</p>
-									<a href="plan2.html" class="cta-button">Learn More</a>
-								</div>
-							</div>
-						</div>
-					</div>
+            .plan-section:hover {
+                border-color: var(--neon-green);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 25px rgba(204, 255, 0, 0.2);
+                transform: translateY(-5px);
+            }
 
-					<!-- Plan 3: Image Left, Text Right -->
-					<div class="container-fluid position-relative half-fluid plan-section">
-						<div class="container">
-							<div class="row align-items-center">
-								<!-- Image -->
-								<div class="col-lg-6 position-lg-absolute left-half h-100">
-									<div class="plan-image" style="background-image: url('images/padeledge.jpeg');"></div>
-								</div>
-								<!-- Text -->
-								<div class="col-lg-6 offset-lg-6 py-5 ps-lg-5">
-									<h1 class="plan-title">PadelEdge Performance</h1>
-									<p class="plan-price-text">$575 · 12 weeks <span>(Exclusive for PadelEdge Academy players)</span></p>
-									<p class="plan-description">The same program as the Padel Performance Program, with special conditions for PadelEdge academy players.</p>
-									<p class="plan-ideal"><strong>Ideal for:</strong> PadelEdge players who want physical work aligned with their technical and tactical training.</p>
-									<a href="plan3.html" class="cta-button">Learn More</a>
-								</div>
-							</div>
-						</div>
-					</div>
+            .plan-section .container { padding: 0; max-width: 100%; }
 
-					<!-- Plan 4: Image Right, Text Left -->
-					<div class="container-fluid position-relative half-fluid plan-section">
-						<div class="container">
-							<div class="row align-items-center">
-								<!-- Image -->
-								<div class="col-lg-6 position-lg-absolute right-half h-100">
-									<div class="plan-image" style="background-image: url('images/marta.jpg');"></div>
-								</div>
-								<!-- Text -->
-								<div class="col-lg-6 py-5 pe-lg-5">
-									<h1 class="plan-title">Elite Performance Program</h1>
-									<p class="plan-price-text">$500 · 12 weeks <span>(2-part payment available)</span></p>
-									<p class="plan-description">Exclusive program for top USA players with a competitive calendar.</p>
-									<p class="plan-ideal"><strong>Ideal for:</strong> High-level players who need performance, confidence, and real flexibility to keep improving.</p>
-									<a href="plan4.html" class="cta-button">Learn More</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+            .left-half, .right-half { overflow: hidden; padding: 0 !important; }
+            
+            .plan-image {
+                background-size: cover;
+                background-position: center;
+                width: 100%;
+                height: 100%;
+                transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .plan-section:hover .plan-image { transform: scale(1.06); }
+
+            .plan-section .col-lg-6.py-5 { padding: 50px !important; }
+
+            .plan-title {
+                color: var(--neon-green);
+                font-size: 2.8rem; font-weight: 900; text-transform: uppercase;
+                margin-bottom: 10px; line-height: 1.1;
+            }
+            .plan-price-text {
+                color: #fff; font-size: 1.5rem; font-weight: 700; font-style: italic;
+                margin-bottom: 25px; border-bottom: 1px solid #333; padding-bottom: 15px;
+            }
+            .plan-price-text span { font-size: 1rem; opacity: 0.6; display: block; margin-top: 5px; font-style: normal; }
+            
+            .plan-description { font-size: 1.3rem; line-height: 1.6; margin-bottom: 20px; color: #ddd; font-weight: 400;}
+            .plan-ideal { font-size: 1.1rem; color: #bbb; margin-bottom: 40px; font-weight: 400;}
+            .plan-ideal strong { color: var(--neon-green); font-weight: 700;}
+
+            /* Botón CTA Neón */
+            .cta-button {
+                display: inline-block;
+                background: var(--neon-green); color: #000000 !important;
+                padding: 15px 40px; font-size: 1.2rem; font-weight: 900;
+                text-transform: uppercase; letter-spacing: 3px; text-decoration: none;
+                border: 2px solid #000000; border-radius: 4px;
+                transition: var(--transition); box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+            }
+            .cta-button:hover {
+                background: #000000; color: var(--neon-green) !important;
+                border-color: var(--neon-green); box-shadow: 0 0 25px rgba(204, 255, 0, 0.6);
+                transform: scale(1.05);
+            }
+
+            @media (min-width: 992px) {
+                .plan-section .row { 
+                    min-height: 650px; 
+                    margin: 0; 
+                }
+                .position-lg-absolute { position: absolute !important; top: 0; bottom: 0; height: 100% !important; }
+                .left-half { left: 0; width: 50%; }
+                .right-half { right: 0; width: 50%; }
+            }
+
+            @media (max-width: 991px) {
+                .services-title { font-size: 2.5rem; }
+                .plan-section { margin-left: 15px !important; margin-right: 15px !important; }
+                .plan-image { min-height: 500px; }
+                .left-half, .right-half { height: 500px !important; position: relative !important; width: 100%;}
+                .plan-section .col-lg-6.py-5 { padding: 30px !important; }
+                .plan-title { font-size: 2.2rem; }
+            }
+
+            /* --- FOOTER INYECTADO ESTILO ELITE --- */
+            #footer { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; background: #050505; border-top: 3px solid var(--neon-green); color: #ffffff; }
+            #footer .fields { display: flex; flex-direction: column; gap: 20px;}
+            #footer h3 { color: var(--neon-green); font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 2px; text-transform: uppercase;}
+            #footer label { display: block; color: var(--neon-green); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem;}
+            
+            #footer input[type="text"], #footer input[type="email"], #footer select, #footer textarea { 
+                width: 100%; background: #111; border: 1px solid #333; color: var(--neon-green); 
+                padding: 15px; font-family: inherit; font-weight: 700; transition: all 0.3s ease; border-radius: 0;
+            }
+            #footer input:focus, #footer select:focus, #footer textarea:focus { border-color: var(--neon-green); outline: none; box-shadow: 0 0 15px rgba(204, 255, 0, 0.2); }
+            
+            #footer input[type="submit"] { 
+                background: var(--neon-green); color: black; padding: 15px 40px; display: inline-block; cursor: pointer; text-transform: uppercase; 
+                letter-spacing: 3px; border: 2px solid #000; font-weight: 800; transition: var(--transition); border-radius: 4px;
+                box-shadow: 0 0 15px rgba(204, 255, 0, 0.3); margin-top: 15px;
+            }
+            #footer input[type="submit"]:hover { background: #000; color: var(--neon-green); border-color: var(--neon-green); box-shadow: 0 0 25px rgba(204, 255, 0, 0.6); }
+
+            .split.contact section { margin-bottom: 40px; }
+            .split.contact p a { color: #fff; text-decoration: none; transition: var(--transition); font-size: 1.1rem; }
+            .split.contact p a:hover { color: var(--neon-green); }
+            
+            ul.icons { list-style: none; padding: 0; display: flex; gap: 20px; }
+            ul.icons a { color: var(--neon-green) !important; font-size: 1.8rem; text-decoration: none; transition: var(--transition); display: inline-block;}
+            ul.icons a:hover { text-shadow: 0 0 15px var(--neon-green); transform: scale(1.1); }
+            ul.actions { list-style: none; padding: 0; }
+
+            #copyright { text-align: center; padding: 30px; background: #050505; color: #666; font-size: 1rem; border-top: 1px solid #222; }
+            #copyright ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 15px; margin: 0; }
+
+            @media (max-width: 991px) {
+                #footer { grid-template-columns: 1fr; padding: 50px 5%; gap: 40px; }
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <header id="custom-header">
+            <div class="header-left">
+                <a href="index.html"><img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img"></a>
+                <span class="header-text">DMM TRAINER USA</span>
+            </div>
+            <button class="hamburger-menu" aria-label="Menu" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-menu-links">
+            <li><a href="index.html">HOME</a></li>
+            <li class="active"><a href="services.html">MY PLANS</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </div>
+
+    
+        <div id="wrapper" class="fade-in">
+
+                <nav id="nav">
+                    <ul class="links">
+                        <li><a href="index.html">HOME</a></li>
+                    <li class="active"><a href="services.html">MY PLANS</a></li>
+                    </ul>
+
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    </ul>
+                </nav>
+
+                <div class="divider"></div>
+
+                <section id="services">
+                    <article class="post featured">
+                        <header class="major">
+                            <h2 class="services-title">TRAINING PLANS</h2>
+                            <p style="color: #000000;">Choose the plan that best fits your goals, schedule, and level.</p>
+                        </header>
+                    </article>
+
+                    <div class="container-fluid position-relative half-fluid plan-section">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 position-lg-absolute left-half h-100">
+                                    <div class="plan-image" style="background-image: url('images/72a98ca5-305c-447e-84da-6655744389fd.JPG');"></div>
+                                </div>
+                                <div class="col-lg-6 offset-lg-6 py-5 ps-lg-5">
+                                    <h1 class="plan-title">Performance Base</h1>
+                                    <p class="plan-price-text">$500 · 8 weeks</p>
+                                    <p class="plan-description">Designed for people who want to improve overall health, general fitness, and performance without the need to compete.</p>
+                                    <p class="plan-ideal"><strong>Ideal for:</strong> Active people, recreational players, or athletes who want to feel stronger, faster, and with fewer aches.</p>
+                                    <a href="plan1.html" class="cta-button">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid position-relative half-fluid plan-section">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 position-lg-absolute right-half h-100">
+                                    <div class="plan-image" style="background-image: url('images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG');"></div>
+                                </div>
+                                <div class="col-lg-6 py-5 pe-lg-5">
+                                    <h1 class="plan-title">Padel Performance Program</h1>
+                                    <p class="plan-price-text">$600 · 12 weeks</p>
+                                    <p class="plan-description">100% padel-specific program focused on performance on court.</p>
+                                    <p class="plan-ideal"><strong>Ideal for:</strong> Competitive players who want to raise their level and perform better in matches and tournaments.</p>
+                                    <a href="plan2.html" class="cta-button">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid position-relative half-fluid plan-section">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 position-lg-absolute left-half h-100">
+                                    <div class="plan-image" style="background-image: url('images/padeledge.jpeg');"></div>
+                                </div>
+                                <div class="col-lg-6 offset-lg-6 py-5 ps-lg-5">
+                                    <h1 class="plan-title">PadelEdge Performance</h1>
+                                    <p class="plan-price-text">$575 · 12 weeks <span>(Exclusive for PadelEdge Academy players)</span></p>
+                                    <p class="plan-description">The same program as the Padel Performance Program, with special conditions for PadelEdge academy players.</p>
+                                    <p class="plan-ideal"><strong>Ideal for:</strong> PadelEdge players who want physical work aligned with their technical and tactical training.</p>
+                                    <a href="plan3.html" class="cta-button">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid position-relative half-fluid plan-section">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 position-lg-absolute right-half h-100">
+                                    <div class="plan-image" style="background-image: url('images/marta.jpg');"></div>
+                                </div>
+                                <div class="col-lg-6 py-5 pe-lg-5">
+                                    <h1 class="plan-title">Elite Performance Program</h1>
+                                    <p class="plan-price-text">$500 · 12 weeks <span>(2-part payment available)</span></p>
+                                    <p class="plan-description">Exclusive program for top USA players with a competitive calendar.</p>
+                                    <p class="plan-ideal"><strong>Ideal for:</strong> High-level players who need performance, confidence, and real flexibility to keep improving.</p>
+                                    <a href="plan4.html" class="cta-button">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
 
-			<!-- Footer -->
-				<footer id="footer">
-					<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">									<label for="plan">Which plan interests you?</label>
-									<select name="plan" id="plan">
-										<option value="">Select a plan...</option>
-										<option value="Plan 1 - Performance Base">Plan 1 - Performance Base</option>
-										<option value="Plan 2 - Padel Performance Program">Plan 2 - Padel Performance Program</option>
-										<option value="Plan 3 - PadelEdge Performance">Plan 3 - PadelEdge Performance</option>
-										<option value="Plan 4 - Elite Performance Program">Plan 4 - Elite Performance Program</option>
-										<option value="I dont know yet">I don't know yet</option>
-									</select>
-								</div>
-								<div class="field">										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-					
-						<section>
-							<h3>Phone</h3>
-							<p><a href="#">+34 628 801 736</a></p>
-						</section>
-						<section>
-							<h3>Email</h3>
-							<p><a href="#">dmmpersonaltrainer@gmail.com</a></p>
-						</section>
-						<section>
-							<h3>Social</h3>
-							<ul class="icons alt">
-								
-								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="https://www.instagram.com/dmm.trainer/" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="https://wa.me/34628801736" target="_blank" class="icon brands alt fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-								
-							</section>
-						</section>
-					</footer>
+            <footer id="footer">
+                    <section>
+                            <form method="post" action="#">
+                                <div class="fields">
+                                    <div class="field">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name" />
+                                    </div>
+                                    <div class="field">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" id="email" />
+                                    </div>
+                                    <div class="field">                                 <label for="plan">Which plan interests you?</label>
+                                    <select name="plan" id="plan">
+                                        <option value="">Select a plan...</option>
+                                        <option value="Plan 1 - Performance Base">Plan 1 - Performance Base</option>
+                                        <option value="Plan 2 - Padel Performance Program">Plan 2 - Padel Performance Program</option>
+                                        <option value="Plan 3 - PadelEdge Performance">Plan 3 - PadelEdge Performance</option>
+                                        <option value="Plan 4 - Elite Performance Program">Plan 4 - Elite Performance Program</option>
+                                        <option value="I dont know yet">I don't know yet</option>
+                                    </select>
+                                </div>
+                                <div class="field">                                     <label for="message">Message</label>
+                                        <textarea name="message" id="message" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message" /></li>
+                                </ul>
+                            </form>
+                        </section>
+                        <section class="split contact">
+                    
+                        <section>
+                            <h3>Phone</h3>
+                            <p><a href="#">+34 628 801 736</a></p>
+                        </section>
+                        <section>
+                            <h3>Email</h3>
+                            <p><a href="#">dmmpersonaltrainer@gmail.com</a></p>
+                        </section>
+                        <section>
+                            <h3>Social</h3>
+                            <ul class="icons alt">
+                                
+                                <li><a href="#" class="icon brands alt fa-facebook-f"><i class="fa fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/dmm.trainer/" target="_blank" class="icon brands alt fa-instagram"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://wa.me/34628801736" target="_blank" class="icon brands alt fa-whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                
+                            </section>
+                        </section>
+                    </footer>
 
-				<!-- Copyright -->
-					<div id="copyright">
-					<ul><li>&copy; DMM TRAINER</li><li>2026 </li></ul>
+                <div id="copyright">
+                    <ul><li>&copy; DMM TRAINER</li><li>2026 </li></ul>
 
-			</div>
+            </div>
 
-		<!-- Scripts -->
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            
+            <script>
+                // Script para quitar el preload y asegurar el funcionamiento del menú móvil personalizado
+                document.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(() => { document.body.classList.remove('is-preload'); }, 100);
 
-	</body>
+                    // Toggle del menú móvil personalizado
+                    const hamburgerBtn = document.getElementById('hamburger-btn');
+                    const mobileMenu = document.getElementById('mobile-menu');
+
+                    if(hamburgerBtn && mobileMenu) {
+                        hamburgerBtn.addEventListener('click', function() {
+                            if (mobileMenu.style.display === 'block') {
+                                mobileMenu.style.display = 'none';
+                            } else {
+                                mobileMenu.style.display = 'block';
+                            }
+                        });
+                    }
+                });
+            </script>
+
+    </body>
 </html>
