@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700;900&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <title>DMM TRAINER - Elite Performance Program</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        
+        <style>
+            :root {
+                --bg-tech: rgb(83, 102, 126); 
+                --text-dark: #f0f0f0; 
+                --accent-dark: #000000;
+                --neon-green: #ccff00; 
+                --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            body {
+                background-color: var(--bg-tech) !important;
+                color: var(--text-dark);
+                font-family: 'Josefin Slab', serif;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            /* --- HEADER --- */
+            #custom-header {
+                background: rgba(0, 0, 0, 0.95); 
+                backdrop-filter: blur(10px);
+                padding: 15px 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                top: 0; width: 100%; z-index: 2000;
+                border-bottom: 2px solid var(--neon-green); 
+            }
+            .header-left { display: flex; align-items: center; gap: 15px; }
+            .logo-img { height: 40px; } 
+            .header-text { font-weight: 700; letter-spacing: 2px; color: var(--neon-green); font-size: 1rem; text-transform: uppercase;}
+            
+            #hamburger-btn { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+            #hamburger-btn span { display: block; width: 30px; height: 3px; background: var(--neon-green); }
+
+            /* --- MENU MÓVIL --- */
+            #mobile-menu {
+                background: rgba(0,0,0,0.98);
+                border-bottom: 2px solid var(--neon-green);
+                position: fixed; top: 72px; width: 100%; z-index: 1999;
+                display: none;
+            }
+            .mobile-menu-links { list-style: none; padding: 20px; text-align: center; margin: 0; }
+            .mobile-menu-links a { color: #fff; text-decoration: none; font-size: 1.2rem; font-weight: 700; display: block; padding: 10px; }
+
+            #wrapper { padding-top: 120px; position: relative; z-index: 2; }
+
+            /* --- DETALLES --- */
+            h1 { font-size: 3.5rem; font-weight: 900; color: #000; text-transform: uppercase; text-shadow: 2px 2px 0px rgba(255,255,255,0.1); }
+            .lead.text-danger { 
+                color: var(--neon-green) !important; font-size: 2.2rem !important; 
+                background: #000; display: inline-block; padding: 10px 25px;
+                box-shadow: 8px 8px 0px #000; margin-bottom: 40px !important;
+            }
+            h2 { color: var(--neon-green); font-weight: 900; text-transform: uppercase; border-left: 5px solid var(--neon-green); padding-left: 15px; margin-top: 50px !important; }
+            p { font-size: 1.2rem; line-height: 1.6; color: #fff; }
+            .plan-details-list { list-style: none; padding: 0; }
+            .plan-details-list li { font-size: 1.15rem; margin-bottom: 15px; padding-left: 35px; position: relative; color: #fff; }
+            .plan-details-list li::before { content: '◆'; position: absolute; left: 0; color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
+
+            .btn-primary { background: #000 !important; border: 2px solid #fff !important; border-radius: 0; padding: 15px 35px; font-weight: 900; text-transform: uppercase; text-decoration: none; display: inline-block;}
+            .btn-danger { background: var(--neon-green) !important; color: #000 !important; border: 2px solid #000 !important; border-radius: 0; padding: 15px 35px; font-weight: 900; text-transform: uppercase; box-shadow: 0 0 20px rgba(204, 255, 0, 0.4); text-decoration: none; display: inline-block;}
+
+            /* --- FOOTER MODERNO CON ICONOS --- */
+            #footer { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; background: #050505; border-top: 3px solid var(--neon-green); color: #ffffff; }
+            #footer h3 { color: var(--neon-green); font-size: 1.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 20px;}
+            #footer input, #footer textarea { width: 100%; background: #111; border: 1px solid #333; color: var(--neon-green); padding: 15px; margin-bottom: 20px; font-family: inherit; font-weight: 700; border-radius: 0; }
+            #footer input[type="submit"] { background: var(--neon-green); color: black; padding: 15px 40px; border: 2px solid #000; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+            
+            .contact-section { margin-bottom: 40px; }
+            .contact-section p a { color: #fff; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
+            .contact-section p a:hover { color: var(--neon-green); }
+
+            .social-icons { display: flex; gap: 25px; padding: 0; list-style: none; }
+            .social-icons a { color: var(--neon-green); font-size: 2rem; transition: 0.3s; }
+            .social-icons a:hover { transform: translateY(-5px); text-shadow: 0 0 15px var(--neon-green); }
+
+            #copyright { text-align: center; padding: 30px; background: #050505; color: #666; border-top: 1px solid #222; }
+
+            @media (max-width: 991px) { #footer { grid-template-columns: 1fr; padding: 50px 5%; } h1 { font-size: 2.2rem; } }
+        </style>
+    </head>
+    <body class="is-preload">
+        <header id="custom-header">
+            <div class="header-left">
+                <a href="index.html"><img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img"></a>
+                <span class="header-text">DMM TRAINER USA</span>
+            </div>
+            <button class="hamburger-menu" id="hamburger-btn"><span></span><span></span><span></span></button>
+        </header>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <ul class="mobile-menu-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="services.html">MY PLANS</a></li>
+            </ul>
+        </div>
+
+        <div id="wrapper">
+            <section id="plan-detail">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <h1 class="mb-4">Elite Performance Program</h1>
+                            <p class="lead text-danger fw-bold mb-4">$500 · 12 weeks <span style="font-size: 1rem; color: #fff; display: block; font-weight: 400; opacity: 0.7;">(2-part payment available)</span></p>
+                            
+                            <h2 class="mt-5 mb-3">Program Overview</h2>
+                            <p>Exclusive program for top USA players with a competitive calendar. This is the ultimate solution for elite-level athletes who compete internationally and need complete flexibility to balance training with a demanding tournament schedule.</p>
+                            
+                            <h2 class="mt-5 mb-3">Ideal For</h2>
+                            <p>This program is designed for top players in the United States who compete at a high level. It offers real flexibility, adapting to competition schedules, travel, and tournaments without losing focus on performance.</p>
+
+                            <h2 class="mt-5 mb-3">What's Included</h2>
+                            <ul class="plan-details-list">
+                                <li>Fully individualized and flexible program</li>
+                                <li>Focus on performance, injury prevention, and recovery</li>
+                                <li>Constant communication and real-time adjustments</li>
+                                <li>Recovery optimization between tournaments</li>
+                            </ul>
+
+                            <h2 class="mt-5 mb-3">Expected Results</h2>
+                            <ul class="plan-details-list">
+                                <li>Improved competition performance and results</li>
+                                <li>Better management of tournament schedule stress</li>
+                                <li>Competitive edge over rivals</li>
+                                <li>Data-driven performance insights</li>
+                            </ul>
+
+                            <div class="mt-5">
+                                <a href="services.html" class="btn btn-primary me-3">Back to Plans</a>
+                                <a href="#footer" class="btn btn-danger">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer">
+                <section>
+                    <form method="post" action="https://formsubmit.co/dmmpersonaltrainer@gmail.com">
+                        <div class="fields">
+                            <input type="text" name="name" placeholder="NAME" required/>
+                            <input type="email" name="email" placeholder="EMAIL" required/>
+                            <textarea name="message" placeholder="MESSAGE" rows="4" required></textarea>
+                        </div>
+                        <input type="submit" value="Send Message" />
+                    </form>
+                </section>
+                <section class="contact-info">
+                    <div class="contact-section">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+34628801736">+34 628 801 736</a></p>
+                    </div>
+                    <div class="contact-section">
+                        <h3>Email</h3>
+                        <p><a href="mailto:dmmpersonaltrainer@gmail.com">dmmpersonaltrainer@gmail.com</a></p>
+                    </div>
+                    <div class="contact-section">
+                        <h3>Social</h3>
+                        <ul class="social-icons">
+                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.instagram.com/dmm.trainer/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://wa.me/34628801736" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                </section>
+            </footer>
+            <div id="copyright"><ul><li>&copy; DMM TRAINER 2026</li></ul></div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => { document.body.classList.remove('is-preload'); }, 100);
+                const hamburgerBtn = document.getElementById('hamburger-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if(hamburgerBtn && mobileMenu) {
+                    hamburgerBtn.addEventListener('click', () => {
+                        mobileMenu.style.display = (mobileMenu.style.display === 'block') ? 'none' : 'block';
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>

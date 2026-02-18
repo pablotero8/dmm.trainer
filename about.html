@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>DMM TRAINER - About</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <style>
+            /* --- VARIABLES Y RESET (Estilo Neón) --- */
+            :root {
+                --bg-tech: #253758; 
+                --text-dark: #f0f0f0; 
+                --accent-dark: #000000;
+                --neon-green: #ccff00; 
+            }
+
+            * { box-sizing: border-box; }
+
+            body {
+                background-color: var(--bg-tech) !important;
+                color: var(--text-dark);
+                font-family: 'Montserrat', sans-serif;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            h1, h2, h3 { font-family: 'Josefin Slab', serif; }
+
+            /* --- HEADER (Adaptado a tu estructura original) --- */
+            #custom-header {
+                background: rgba(0, 0, 0, 0.95); 
+                backdrop-filter: blur(10px);
+                padding: 15px 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                top: 0; width: 100%; z-index: 2000;
+                border-bottom: 2px solid var(--neon-green); 
+            }
+            .header-left { display: flex; align-items: center; gap: 15px; }
+            /* Asegura que tu logo se vea bien */
+            .logo-img { height: 40px; width: auto; display: block; } 
+            /* Aplica el estilo neón a tu texto original */
+            .header-text { 
+                font-weight: 700; letter-spacing: 2px; 
+                color: var(--neon-green); font-size: 1.2rem; 
+                text-transform: uppercase; font-family: 'Josefin Slab', serif;
+                text-decoration: none;
+            }
+            
+            /* Botón Hamburguesa original con estilo neón */
+            .hamburger-menu { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; height: 25px; width: 30px; padding: 0; }
+            .hamburger-menu span { display: block; width: 30px; height: 3px; background: var(--neon-green); transition: 0.3s; }
+            
+            /* Animación Hamburguesa */
+            .hamburger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+            .hamburger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -8px); }
+
+            /* --- MENU MÓVIL --- */
+            #mobile-menu {
+                background: rgba(0,0,0,0.98);
+                border-bottom: 2px solid var(--neon-green);
+                position: fixed; top: 72px; width: 100%; z-index: 1999;
+                display: none; padding-bottom: 20px;
+                text-align: center;
+            }
+            #mobile-menu.active { display: block; animation: slideDown 0.3s ease; }
+            @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+            .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
+            .mobile-menu-links li { border-bottom: 1px solid #333; }
+            .mobile-menu-links a { 
+                color: #fff; text-decoration: none; font-size: 1.2rem; 
+                font-weight: 700; display: block; padding: 20px; 
+                text-transform: uppercase; letter-spacing: 2px;
+                transition: color 0.3s;
+            }
+            .mobile-menu-links a:hover, .mobile-menu-links .active a { color: var(--neon-green); }
+
+       
+
+            /* --- CONTENIDO PRINCIPAL --- */
+            #wrapper { 
+                padding-top: 100px; 
+                position: relative; z-index: 2; 
+                max-width: 1200px; margin: 0 auto;
+                padding-left: 5%; padding-right: 5%;
+            }
+
+            h1 { 
+                font-size: 5.5rem; font-weight: 900; color: #fff; 
+                text-transform: uppercase; line-height: 0.9;
+                margin-bottom: 10px;
+            }
+            h1 span { color: var(--neon-green); display: block; font-size: 3.5rem; margin-bottom: 50px; }
+
+            h2 { 
+                color: var(--neon-green); font-weight: 700; 
+                text-transform: uppercase; border-left: 5px solid var(--neon-green); 
+                padding-left: 15px; margin-top: 60px !important; margin-bottom: 20px;
+                font-size: 2rem; letter-spacing: 1px;
+            }
+
+            p { font-size: 1.4rem; line-height: 1.8; color: #ccc; max-width: 800px; margin-bottom: 20px; }
+
+            /* Caja destacada "WINNER" */
+            .winner-box { 
+                color: var(--neon-green) !important; font-size: 2rem !important; 
+                background: #000; display: inline-block; padding: 20px 40px;
+                box-shadow: 10px 10px 0px rgba(255,255,255,0.1); 
+                margin: 60px 0 !important; font-family: 'Josefin Slab', serif;
+                font-weight: 700; text-transform: uppercase; border: 1px solid var(--neon-green);
+                text-align: center; width: 100%; max-width: 600px;
+            }
+
+            /* Lista con Diamantes */
+            .plan-details-list { list-style: none; padding: 0; margin-top: 30px; }
+            .plan-details-list li { 
+                font-size: 1.4rem; margin-bottom: 20px; padding-left: 35px; 
+                position: relative; color: #fff; 
+            }
+            .plan-details-list li::before { 
+                content: '◆'; position: absolute; left: 0; 
+                color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); font-size: 1.2rem;
+            }
+            .plan-details-list strong { color: #fff; font-weight: 700; }
+
+            /* Grid para Credenciales */
+            .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+            @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 2.5rem; } }
+
+            /* --- FOOTER MODERNO --- */
+            #footer { 
+                padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; 
+                background: #050505; border-top: 3px solid var(--neon-green); color: #ffffff; 
+                margin-top: 100px;
+            }
+            #footer h3 { color: var(--neon-green); font-size: 1.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 30px;}
+            
+            #footer input, #footer textarea { 
+                width: 100%; background: #111; border: 1px solid #333; 
+                color: #fff; padding: 15px; margin-bottom: 20px; 
+                font-family: inherit; font-weight: 400; border-radius: 0; outline: none;
+            }
+            #footer input:focus, #footer textarea:focus { border-color: var(--neon-green); }
+            
+            #footer input[type="submit"] { 
+                background: var(--neon-green); color: black; padding: 15px 40px; 
+                border: 2px solid var(--neon-green); font-weight: 800; cursor: pointer; 
+                text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+            }
+            #footer input[type="submit"]:hover {
+                background: transparent; color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green);
+            }
+
+            .contact-info p { font-size: 1.2rem; margin-bottom: 15px; }
+            .contact-info a { color: #fff; text-decoration: none; transition: 0.3s; }
+            .contact-info a:hover { color: var(--neon-green); }
+
+            .social-icons { display: flex; gap: 20px; padding: 0; list-style: none; margin-top: 30px; }
+            .social-icons a { 
+                color: #000; background: var(--neon-green); width: 40px; height: 40px; 
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.2rem; transition: 0.3s; border-radius: 50%;
+            }
+            .social-icons a:hover { transform: translateY(-5px); box-shadow: 0 0 20px var(--neon-green); background: #fff; }
+
+            #copyright { text-align: center; padding: 30px; background: #000; color: #444; font-size: 0.8rem; }
+            
+            @media (max-width: 991px) { #footer { grid-template-columns: 1fr; padding: 50px 5%; gap: 40px; } }
+        </style>
+    </head>
+    
+    <body>
+
+        <header id="custom-header">
+            <div class="header-left">
+                <a href="index.html"><img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img"></a>
+                <span class="header-text">DMM TRAINER USA</span>
+            </div>
+            <button class="hamburger-menu" aria-label="Menu" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+        <div id="mobile-menu">
+            <ul class="mobile-menu-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="services.html">MY PLANS</a></li>
+                <li class="active"><a href="about.html">ABOUT</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
+
+        <div id="wrapper">
+
+
+            <section>
+                <h1><span>The Philosophy</span> ABOUT DMM TRAINER</h1>
+                <p style="font-size: 1.3rem; color: #fff;">What sets DMM Trainer apart from other online personal trainers, especially in the world of racquet sports?</p>
+                
+                <p>I work in three-month cycles because progress requires structure, follow-up, and time. Each trimester is carefully planned to help you advance measurably and consistently. It's scientifically proven that 12 weeks of planned training is necessary for significant changes in our bodies.</p>
+            </section>
+
+            <section>
+                <h2>Specialized in Racquet Sports</h2>
+                <p>Being specialized in racquet sports means I understand not only the physical demands of these sports but also the technique, injury prevention, and specific preparation you need to perform at your best on the court. Whether you're an amateur or a competitive player, I'll adapt your training.</p>
+                
+                <div class="grid-2">
+                    <div>
+                        <h2>My Credentials</h2>
+                        <ul class="plan-details-list">
+                            <li><strong>Bachelor's Degree</strong> in Physical Activity & Sports Sciences.</li>
+                            <li>Specialized in <strong>Racquet Sports</strong>.</li>
+                            <li>Former High-Performance Athlete (7 years).</li>
+                            <li>Tennis and Padel Coach (5+ years exp).</li>
+                            <li>Personal Trainer (3+ years exp).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Who I've Trained</h2>
+                        <ul class="plan-details-list">
+                            <li>Tennis & Padel Players.</li>
+                            <li>Seniors seeking mobility.</li>
+                            <li>Injury recovery patients.</li>
+                            <li>National Police Academy candidates.</li>
+                            <li>Fitness enthusiasts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>My Philosophy</h2>
+                <p>Training with me is not just training—it's having a plan, a guide, and a real commitment. My main objective is <strong>injury prevention and eliminating pain</strong>. If there's an injury, it doesn't matter how fast or strong you are.</p>
+
+                <div style="display: flex; justify-content: center;">
+                    <div class="winner-box">
+                        STRONGER, FASTER: WINNER
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <footer id="footer">
+            <section>
+                <h3>Send a Message</h3>
+                <form method="post" action="#">
+                    <input type="text" name="name" placeholder="NAME" />
+                    <input type="email" name="email" placeholder="EMAIL" />
+                    <textarea name="message" rows="4" placeholder="MESSAGE"></textarea>
+                    <input type="submit" value="SEND MESSAGE" />
+                </form>
+            </section>
+            
+            <section class="contact-info">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone-alt" style="color: var(--neon-green); margin-right: 10px;"></i> <a href="tel:+34628801736">+34 628 801 736</a></p>
+                <p><i class="fas fa-envelope" style="color: var(--neon-green); margin-right: 10px;"></i> <a href="mailto:dmmpersonaltrainer@gmail.com">dmmpersonaltrainer@gmail.com</a></p>
+                
+                <h3 style="margin-top: 40px;">Follow Me</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dmm.trainer/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/34628801736" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </section>
+        </footer>
+
+        <div id="copyright">
+            &copy; DMM TRAINER 2026. ALL RIGHTS RESERVED.
+        </div>
+
+        <script>
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer click fuera (opcional)
+            document.addEventListener('click', (e) => {
+                if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    hamburgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        </script>
+
+    </body>
+</html>

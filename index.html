@@ -1,30 +1,37 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <title>DMM TRAINER</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         
         <style>
-            /* --- SISTEMA VISUAL DMM TRAINER: ELITE PERFORMANCE V23 (FINAL TWEAKS) --- */
+            /* --- VARIABLES --- */
             :root {
-                --bg-tech: rgb(83, 102, 126); 
+                --bg-tech: #253758; 
                 --text-dark: #f0f0f0; 
                 --accent-dark: #000000;
                 --neon-green: #ccff00; 
                 --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             }
 
-            body {
-                background-color: var(--bg-tech);
-                color: var(--text-dark);
-                font-family: 'Josefin Slab', serif;
-                margin: 0;
-                overflow-x: hidden;
+            * { box-sizing: border-box; }
+
+            body { 
+                background-color: var(--bg-tech); 
+                color: var(--text-dark); 
+                font-family: 'Montserrat', sans-serif; 
+                margin: 0; 
+                overflow-x: hidden; 
             }
 
-            /* --- HEADER SUPERIOR --- */
+            h1, h2, h3 { font-family: 'Josefin Slab', serif; }
+
+            /* =========================================
+               HEADER & MENU
+            ========================================= */
             #custom-header {
                 background: rgba(0, 0, 0, 0.95); 
                 backdrop-filter: blur(10px);
@@ -34,15 +41,48 @@
                 align-items: center;
                 position: fixed;
                 top: 0; width: 100%; z-index: 2000;
-                box-sizing: border-box;
                 border-bottom: 2px solid var(--neon-green); 
             }
+            .header-left { display: flex; align-items: center; gap: 15px; }
+            .header-left a { text-decoration: none; display: flex; align-items: center; }
+            .logo-img { height: 40px; width: auto; display: block; } 
+            .header-text { 
+                font-weight: 700; letter-spacing: 2px; 
+                color: var(--neon-green); font-size: 1.2rem; 
+                text-transform: uppercase; font-family: 'Josefin Slab', serif;
+                text-decoration: none;
+            }
+            
+            .hamburger-menu { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; height: 25px; width: 30px; padding: 0; }
+            .hamburger-menu span { display: block; width: 30px; height: 3px; background: var(--neon-green); transition: 0.3s; }
+            
+            .hamburger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+            .hamburger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -8px); }
 
-            .logo-img { height: 40px; } 
-            .header-text { font-weight: 700; letter-spacing: 2px; color: var(--neon-green); }
-            #hamburger-btn span { background: var(--neon-green) !important; }
+            #mobile-menu {
+                background: rgba(0,0,0,0.98);
+                border-bottom: 2px solid var(--neon-green);
+                position: fixed; top: 72px; width: 100%; z-index: 1999;
+                display: none; padding-bottom: 20px;
+                text-align: center;
+            }
+            #mobile-menu.active { display: block; animation: slideDown 0.3s ease; }
+            @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-            /* --- INTRO SECTION --- */
+            .mobile-menu-links { list-style: none; padding: 0; margin: 0; }
+            .mobile-menu-links li { border-bottom: 1px solid #333; }
+            .mobile-menu-links a { 
+                color: #fff; text-decoration: none; font-size: 1.2rem; 
+                font-weight: 700; display: block; padding: 20px; 
+                text-transform: uppercase; letter-spacing: 2px;
+                transition: color 0.3s;
+            }
+            .mobile-menu-links a:hover, .mobile-menu-links .active a { color: var(--neon-green); }
+
+            /* =========================================
+               ESTILOS INDEX (Madre)
+            ========================================= */
             #intro {
                 height: 100vh; width: 100%; display: flex; flex-direction: column;
                 justify-content: center; align-items: center; text-align: center;
@@ -51,352 +91,613 @@
             }
             #intro::before {
                 content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0, 0, 0, 0.6); z-index: 2; opacity: var(--intro-opacity); will-change: opacity;
+                background: rgba(0, 0, 0, 0.6); z-index: 2; opacity: var(--intro-opacity);
             }
             #intro::after {
                 content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
                 background-image: url('images/gym.2.jpg'); background-size: cover; background-position: center;
-                z-index: 1; opacity: var(--intro-opacity); will-change: opacity;
+                z-index: 1; opacity: var(--intro-opacity);
             }
             #intro * { z-index: 3; position: relative; }
+            .intro-logo { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)); will-change: transform; }
+            .intro-line.line-1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; line-height: 0.9; text-transform: uppercase; color: var(--neon-green); text-shadow: 2px 2px 10px #000; }
+            .intro-flag { width: 45px; margin: 20px 0; }
+            .intro-line.line-3 { font-size: clamp(1.5rem, 5vw, 3.5rem); letter-spacing: 8px; font-weight: 700; text-shadow: 3px 3px 10px #000; color: #fff; }
 
-            /* Animaciones Intro */
-            .intro-logo { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)); will-change: transform, opacity; transform-origin: center center; }
-            
-            .intro-line.line-1 { 
-                font-size: clamp(3rem, 10vw, 6rem); 
-                font-weight: 900; line-height: 0.9; text-transform: uppercase; will-change: transform;
-                color: #ffffff; text-shadow: 2px 2px 10px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,0.7);
-            }
-
-            .intro-flag { width: 45px; margin: 20px 0; will-change: transform; }
-            .intro-line.line-3 { font-size: clamp(1.5rem, 5vw, 3.5rem); letter-spacing: 8px; font-weight: 700; text-shadow: 3px 3px 10px rgba(0,0,0,0.8); color: #ffffff; display: block; margin-top: 15px; will-change: transform; }
-
-            /* --- WRAPPER INVASOR --- */
+            /* WRAPPER: Contiene TODO el contenido desplazable */
             #wrapper { 
                 background-color: var(--bg-tech); 
-                margin-top: calc(100vh + 100px); position: relative; z-index: 2;
+                margin-top: calc(100vh + 100px); 
+                position: relative; 
+                z-index: 2; 
+                width: 100%; 
+                padding-bottom: 0;
             }
             #wrapper::before {
                 content: ''; position: absolute; top: -100px; left: 0; width: 100%; height: 100px; 
-                background: linear-gradient(to bottom, rgba(83, 102, 126, 0) 0%, rgba(83, 102, 126, 1) 100%);
-                pointer-events: none; z-index: 2;
+                background: linear-gradient(to bottom, rgba(30, 35, 45, 0) 0%, #253758 100%);
             }
 
-            /* Bio */
-            .plans-intro-container {
-                display: flex; flex-direction: column; align-items: center; justify-content: center;
-                gap: 50px; padding: 80px 5% 40px 5%; text-align: center; 
+            /* =========================================
+               NUEVA SECCIÓN BIO INTEGRADA "CYBER CARD"
+            ========================================= */
+            .bio-section-wrapper {
+                padding: 80px 5%;
+                display: flex;
+                justify-content: center;
+                position: relative;
+                z-index: 10;
+                margin-top: -100px; /* Superposición con el intro */
             }
-            .plans-intro-container img { 
-                width: 100%; max-width: 500px; 
-                filter: drop-shadow(0 0 4px var(--neon-green)) drop-shadow(15px 15px 30px rgba(0,0,0,0.5)); 
+
+            /* Contenedor Vertical para Tarjeta + Botón */
+            .bio-stack-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 1100px;
+            }
+
+            /* LA TARJETA ÚNICA INTEGRADA */
+            .bio-integrated-card {
+                display: grid;
+                grid-template-columns: 45% 55%; /* Proporción Imagen / Texto */
+                width: 100%;
+                background: #0a0a0a; /* Fondo oscuro base */
+                border: 3px solid var(--neon-green);
+                box-shadow: 0 0 50px rgba(204, 255, 0, 0.2); /* Resplandor exterior */
+                overflow: hidden; /* Asegura que la imagen no se salga */
+                position: relative;
+            }
+            
+            /* COLUMNA IZQUIERDA: FOTO (FONDO VERDE, SIN FILTROS) */
+            .bio-photo-col {
+                position: relative;
+                height: 100%;
+                min-height: 600px; /* Altura mínima para imponer presencia */
+                background-color: var(--neon-green); /* FONDO VERDE */
+                overflow: hidden;
+            }
+
+            /* La imagen de Diego (LIMPIA) */
+            .bio-photo-col img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; 
+                object-position: top center;
                 transition: var(--transition);
             }
-            .plans-intro-container img:hover { 
-                filter: drop-shadow(0 0 8px var(--neon-green)) drop-shadow(15px 15px 30px rgba(0,0,0,0.6));
-                transform: scale(1.03) translateY(-5px); 
-            }
-            .plans-intro-text-wrapper { max-width: 1000px; }
 
-            /* --- ESTILOS BASE DE TEXTO --- */
-            .plans-intro {
-                border-left: none; margin-bottom: 25px; font-weight: 700; 
-                letter-spacing: 2px; line-height: 1.2;
-            }
-
-            /* --- TÍTULO PRINCIPAL (Caja Negra/Neón) --- */
-            .plans-intro:first-child {
-                font-size: 1.8rem; text-transform: uppercase; margin-top: 20px; 
-                margin-bottom: 40px; 
-                color: var(--neon-green); background-color: #000000;
-                display: inline-block; 
-                padding: 15px 30px; 
+            /* COLUMNA DERECHA: PANEL DE DATOS */
+            .bio-content-col {
+                padding: 50px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(0,0,0,0.95));
                 position: relative;
-                box-shadow: 0 0 20px rgba(204, 255, 0, 0.2); border-radius: 0;
-                border: 2px solid var(--neon-green); 
-            }
-            /* CAMBIO V23: Mayor separación entre líneas */
-            .plans-intro:first-child span { 
-                display: block; 
-                line-height: 1.6; /* Aumentado para separar el texto */
+                border-left: 2px solid var(--neon-green); 
             }
 
-            /* --- BULLETPOINTS GIGANTES --- */
-            .plans-intro:not(:first-child) {
-                font-size: 3.8rem; font-weight: 900; color: #000000; 
-                text-shadow: 2px 2px 4px rgba(204, 255, 0, 0.4); margin-bottom: 35px; line-height: 1.1;
+            .welcome-title-tech {
+                font-size: 2.5rem;
+                font-weight: 900;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #fff;
+                margin-bottom: 40px;
+                line-height: 1.1;
+                text-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
             }
-            .neon-bullet {
-                color: var(--neon-green); text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-                margin-right: 20px; font-size: 3rem; vertical-align: middle;
+            .welcome-title-tech span.highlight {
+                color: var(--neon-green);
+                display: block;
+                font-size: 3rem;
             }
-
-            /* Botón Mega */
-            .my-plans-button-container { text-align: center; margin: 20px 0 100px 0; }
-            .btn-mega {
-                background: var(--neon-green); color: #000000; padding: 30px 100px;
-                font-size: 2.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 8px;
-                border: 2px solid #000000; border-radius: 4px; cursor: pointer; transition: all 0.3s ease-in-out;
-                box-shadow: 0 0 30px rgba(204, 255, 0, 0.5); animation: neonPulse 2s infinite;
-            }
-            .btn-mega:hover {
-                background: #000000; color: var(--neon-green); border-color: var(--neon-green);
-                box-shadow: 0 0 60px rgba(204, 255, 0, 0.9); transform: translateY(-5px) scale(1.05);
-            }
-            @keyframes neonPulse {
-                0%, 100% { box-shadow: 0 0 30px rgba(204, 255, 0, 0.5); }
-                50% { box-shadow: 0 0 60px rgba(204, 255, 0, 0.8); }
+            .welcome-title-tech span.sub {
+                font-size: 1.2rem;
+                color: #aaa;
+                font-weight: 400;
+                display: block;
+                margin-top: 10px;
+                letter-spacing: 1px; font-family: 'Montserrat', sans-serif;
             }
 
-            /* --- CARRUSEL DE TESTIMONIOS (Fondo Negro + Bordes Neón) --- */
-            .testimonials-section { 
-                padding: 100px 0; background: #050505; overflow: hidden;
-                /* CAMBIO V23: Bordes superior e inferior neón */
-                border-top: 3px solid var(--neon-green);
-                border-bottom: 3px solid var(--neon-green);
+            /* Lista de Specs (Bullets modernos) */
+            .tech-specs-list {
+                list-style: none;
+                padding: 0;
+                margin: 0; /* Ya no necesita margen inferior grande porque el botón salió */
             }
-            .testimonials-title { text-align: center; letter-spacing: 5px; color: #ffffff; font-size: 2.5rem; margin-bottom: 60px; }
-            .testimonials-track { display: flex; width: max-content; animation: scroll 35s linear infinite; }
-            .testimonials-track:hover { animation-play-state: paused; }
-            .testimonial-card {
-                background: #000000; padding: 40px; margin: 0 25px; width: 750px; 
-                border: 3px solid var(--neon-green); display: flex; flex-direction: row; 
-                align-items: center; justify-content: space-between; gap: 50px; 
-                box-shadow: 0 10px 40px rgba(0,0,0,0.6); transition: var(--transition);
+
+            .tech-spec-item {
+                display: flex;
+                align-items: center; 
+                margin-bottom: 25px;
+                padding: 15px;
+                background: rgba(255,255,255,0.03); 
+                border: 1px solid rgba(204, 255, 0, 0.2); 
+                transition: var(--transition);
             }
-            .testimonial-text-wrapper { flex: 1; text-align: left; }
-            .testimonial-quote { color: var(--neon-green); font-size: 1.3rem; line-height: 1.5; font-style: italic; margin-bottom: 25px; }
-            .testimonial-name { color: #ffffff; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
-            .testimonial-photo { width: 200px; height: 300px; border-radius: 5px; object-fit: cover; border: 4px solid var(--neon-green); filter: grayscale(0.3); flex-shrink: 0; }
-            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-2400px); } }
-
-            /* --- NUEVA GALERÍA: DOBLE CARRUSEL VERTICAL --- */
-            .gallery-section { background-color: var(--bg-tech); padding-bottom: 100px; overflow: hidden; position: relative; }
-            .gallery-section .testimonials-title { color: #000000; margin-top: 50px; padding-top: 0; font-weight: 800; }
-
-            .gallery-container { display: flex; flex-direction: column; gap: 30px; position: relative; }
-
-            .gallery-container::before, .gallery-container::after {
-                content: ''; position: absolute; top: 0; width: 150px; height: 100%; z-index: 5; pointer-events: none;
-            }
-            .gallery-container::before { left: 0; background: linear-gradient(to right, rgb(83, 102, 126) 0%, transparent 100%); }
-            .gallery-container::after { right: 0; background: linear-gradient(to left, rgb(83, 102, 126) 0%, transparent 100%); }
-
-            .gallery-track { display: flex; gap: 30px; width: max-content; }
-            .gallery-track.left { animation: scroll-gallery-left 40s linear infinite; }
-            .gallery-track.right { animation: scroll-gallery-right 40s linear infinite; }
-            .gallery-track:hover { animation-play-state: paused; }
-
-            /* CAMBIO V23: Tarjetas verticales */
-            .gallery-item {
-                width: 350px; /* Más estrecho */
-                height: 500px; /* Más alto (Vertical) */
-                border-radius: 4px; overflow: hidden;
-                border: 2px solid #000; transition: var(--transition); background: #000;
-            }
-            .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-
-            .gallery-item:hover {
+            .tech-spec-item:hover {
+                background: rgba(204, 255, 0, 0.1);
                 border-color: var(--neon-green);
-                box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
-                transform: scale(1.02); z-index: 10;
+                transform: translateX(10px); 
             }
-            .gallery-item:hover img { transform: scale(1.1); }
 
-            @keyframes scroll-gallery-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-            @keyframes scroll-gallery-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+            .spec-icon-box {
+                width: 60px; height: 60px;
+                display: flex; align-items: center; justify-content: center;
+                background: rgba(0,0,0,0.5);
+                border: 2px solid var(--neon-green);
+                margin-right: 20px;
+                flex-shrink: 0; 
+            }
+            .spec-svg-tech {
+                width: 35px; height: 35px;
+                filter: drop-shadow(0 0 5px var(--neon-green));
+            }
 
-            /* Footer */
-            #footer { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; background: #050505; border-top: 3px solid var(--neon-green); color: #ffffff; }
-            #footer h2, #footer h3 { color: var(--neon-green); }
-            #footer input, #footer textarea { width: 100%; background: #111; border: 1px solid #333; color: var(--neon-green); padding: 15px; margin-bottom: 20px; font-family: inherit; font-weight: 700; transition: all 0.3s ease; }
-            #footer input:focus, #footer textarea:focus { border-color: var(--neon-green); outline: none; box-shadow: 0 0 15px rgba(204, 255, 0, 0.2); }
-            #footer .button { background: var(--neon-green); color: black; padding: 15px 40px; display: inline-block; cursor: pointer; text-transform: uppercase; letter-spacing: 3px; border: none; font-weight: 800; transition: var(--transition); }
-            #footer .button:hover { background: white; box-shadow: 0 0 20px var(--neon-green); }
+            .spec-text {
+                font-size: 1.6rem;
+                font-weight: 700; 
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #fff;
+            }
+            .spec-text span {
+                display: block;
+                font-size: 0.9rem;
+                color: var(--neon-green);
+                font-weight: 400;
+                margin-bottom: 5px;
+                font-family: 'Josefin Slab', serif;
+            }
+
+            /* Botón Mega FUERA de la caja */
+            .btn-mega {
+                background: var(--neon-green); color: #000; 
+                padding: 30px 100px; 
+                font-size: 2.5rem; font-weight: 900;
+                text-transform: uppercase; border: 2px solid #000; 
+                cursor: pointer; transition: 0.3s;
+                box-shadow: 0 0 30px rgba(204,255,0,0.5); 
+                animation: neonPulse 2s infinite; 
+                margin-top: 100px; /* Separación con la caja */
+                width: 100%;
+                max-width: 600px; /* Ancho controlado */
+            }
+            .btn-mega:hover { background: #000; color: var(--neon-green); border-color: var(--neon-green); }
+            @keyframes neonPulse { 0%, 100% { box-shadow: 0 0 30px rgba(204, 255, 0, 0.5); } 50% { box-shadow: 0 0 50px rgba(204, 255, 0, 0.8); } }
+
+            /* Responsive Bio */
+            @media (max-width: 991px) {
+                .bio-integrated-card {
+                    grid-template-columns: 1fr; /* Una sola columna en móvil */
+                    max-width: 500px; 
+                }
+                .bio-photo-col {
+                    height: 400px; 
+                    min-height: auto;
+                    border-bottom: 3px solid var(--neon-green);
+                }
+                .bio-content-col {
+                    padding: 30px;
+                    border-left: none; 
+                }
+                .welcome-title-tech { font-size: 2rem; text-align: center; }
+                .welcome-title-tech span.highlight { font-size: 2.5rem; }
+                .tech-spec-item { padding: 10px; }
+                .spec-icon-box { width: 50px; height: 50px; margin-right: 15px; }
+                .spec-svg-tech { width: 28px; height: 28px; }
+                .spec-text { font-size: 1.1rem; }
+                .btn-mega { font-size: 1.8rem; padding: 20px 40px; }
+            }
+
+            /* =========================================
+               TESTIMONIOS & GALERÍA
+            ========================================= */
+          /* =========================================
+               TESTIMONIOS (HÍBRIDO: AUTO + MANUAL)
+            ========================================= */
+            .testimonials-section { 
+                padding: 100px 0; 
+                background: #050505; 
+                border-top: 3px solid var(--neon-green); 
+                border-bottom: 3px solid var(--neon-green); 
+                margin-top: 50px;
+                overflow: hidden;
+            }
+
+            .testimonials-wrapper {
+                overflow-x: auto;
+                cursor: grab;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE */
+                padding: 20px 0;
+            }
+
+            .testimonials-wrapper::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+            .testimonials-track { 
+                display: flex; 
+                width: max-content; 
+                gap: 30px; 
+                /* Animación continua */
+                animation: scrollTest 40s linear infinite;
+                padding-left: 30px;
+            }
+
+            /* PAUSA AL HACER HOVER (Opcional, ayuda a leer) */
+            .testimonials-track:hover {
+                animation-play-state: paused;
+            }
+
+            .testimonial-card { 
+                background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+                width: 750px; 
+                border: 1px solid #333; 
+                display: flex; 
+                align-items: stretch;
+                transition: var(--transition);
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+
+            .testimonial-card:hover {
+                border-color: var(--neon-green);
+                box-shadow: 0 0 40px rgba(204, 255, 0, 0.15);
+            }
+
+            .text-wrapper {
+                flex: 1;
+                padding: 50px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .testimonial-quote {
+                color: #e0e0e0;
+                font-style: italic; 
+                font-size: 1.4rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .testimonial-name {
+                color: var(--neon-green); 
+                text-transform: uppercase; 
+                font-weight: 900; 
+                letter-spacing: 2px;
+            }
+
+            .testimonial-photo { 
+                width: 300px; 
+                object-fit: cover; 
+                filter: grayscale(100%);
+                transition: var(--transition);
+                border-left: 2px solid var(--neon-green);
+            }
+
+            .testimonial-card:hover .testimonial-photo { filter: grayscale(0%); }
+
+            /* Animación Infinita (Desplaza la mitad del track que está duplicado) */
+            @keyframes scrollTest {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-50% - 15px)); } /* 15px es la mitad del gap */
+            }
 
             @media (max-width: 768px) {
-                #footer { grid-template-columns: 1fr; }
-                .plans-intro:first-child { font-size: 1.4rem; padding: 12px 20px; }
-                .plans-intro:not(:first-child) { font-size: 2.2rem; } 
-                .neon-bullet { font-size: 1.8rem; margin-right: 10px; }
-
-                .btn-mega { padding: 20px 30px; font-size: 1.5rem; }
-                .testimonial-card { width: 320px; flex-direction: column; text-align: center; padding: 30px; gap: 30px; }
-                .testimonial-text-wrapper { text-align: center; }
-                .testimonial-photo { width: 150px; height: 220px; }
-                
-                /* CAMBIO V23: Ajuste vertical móvil */
-                .gallery-item { width: 250px; height: 350px; }
-                
-                .gallery-container::before, .gallery-container::after { width: 50px; }
+                .testimonial-card { width: 85vw; flex-direction: column-reverse; }
+                .testimonial-photo { width: 100%; height: 250px; border-left: none; border-bottom: 2px solid var(--neon-green); }
+                .text-wrapper { padding: 30px; }
             }
+
+            /* =========================================
+               TESTIMONIOS & GALERÍA
+            ========================================= */
+
+            .gallery-section { background: var(--bg-tech); padding: 80px 0; overflow: hidden; }
+            .gallery-container { display: flex; flex-direction: column; gap: 30px; }
+            .gallery-track { display: flex; gap: 30px; width: max-content; }
+            .gallery-track.left { animation: scrollGal 40s linear infinite; }
+            .gallery-track.right { animation: scrollGalRev 40s linear infinite; }
+            .gallery-item { width: 350px; height: 500px; border: 2px solid #000; overflow: hidden; background: #000; }
+            .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+            .gallery-item:hover img { transform: scale(1.1); }
+            @keyframes scrollGal { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+            @keyframes scrollGalRev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+            /* =========================================
+               FOOTER & COPYRIGHT
+            ========================================= */
+            #footer { 
+                padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; 
+                background: #050505; border-top: 3px solid var(--neon-green); color: #ffffff; 
+                margin-top: 100px; position: relative; z-index: 3;
+            }
+            #footer h3 { color: var(--neon-green); font-size: 1.5rem; text-transform: uppercase; font-weight: 900; margin-bottom: 30px;}
+            
+            #footer .fields { display: flex; flex-direction: column; gap: 20px;}
+
+            /* Inputs */
+            #footer input, #footer textarea { 
+                width: 100%; background: #111; border: 1px solid #333; 
+                color: #fff; padding: 15px; margin-bottom: 0; 
+                font-family: inherit; font-weight: 400; border-radius: 0; outline: none;
+            }
+            #footer input:focus, #footer textarea:focus { border-color: var(--neon-green); }
+            
+            #footer ul.actions { list-style: none; padding: 0; margin: 0; width: 100%; }
+            #footer ul.actions li { width: 100%; margin: 0; padding: 0; }
+
+            #footer input[type="submit"] { 
+                background: var(--neon-green); color: black; padding: 15px 40px; 
+                border: 2px solid var(--neon-green); font-weight: 800; cursor: pointer; 
+                text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+                width: 100%; margin-top: 15px;
+            }
+            #footer input[type="submit"]:hover {
+                background: transparent; color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green);
+            }
+
+            .contact-info p { font-size: 1.2rem; margin-bottom: 15px; }
+            .contact-info a { color: #fff !important; text-decoration: none; transition: 0.3s; }
+            .contact-info a:hover { color: var(--neon-green) !important; }
+
+            /* ICONOS CAJA VERDE REDONDA */
+            .social-icons { display: flex; gap: 20px; padding: 0; list-style: none; margin-top: 30px; }
+            .social-icons a { 
+                color: #000 !important; background: var(--neon-green); width: 45px; height: 45px; 
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.5rem; transition: 0.3s; 
+                border-radius: 50%; /* Redondos */
+                text-decoration: none;
+            }
+            .social-icons a:hover { transform: translateY(-5px); box-shadow: 0 0 20px var(--neon-green); background: #fff; }
+
+            #copyright { text-align: center; padding: 30px; background: #050505; color: #444; font-size: 0.8rem; }
+            
+            @media (max-width: 991px) { #footer { grid-template-columns: 1fr; padding: 50px 5%; gap: 40px; } }
         </style>
     </head>
+    
     <body>
 
         <header id="custom-header">
             <div class="header-left">
-                <img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img">
+                <a href="index.html"><img src="images/dmm.logo.white.png" alt="DMM TRAINER" class="logo-img"></a>
                 <span class="header-text">DMM TRAINER USA</span>
             </div>
-            <button class="hamburger-menu" id="hamburger-btn" style="background:none; border:none; cursor:pointer;">
-                <span style="display:block; width:30px; height:3px; background:black; margin:6px;"></span>
-                <span style="display:block; width:30px; height:3px; background:black; margin:6px;"></span>
-                <span style="display:block; width:30px; height:3px; background:black; margin:6px;"></span>
+            <button class="hamburger-menu" aria-label="Menu" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </header>
 
+        <div id="mobile-menu">
+            <ul class="mobile-menu-links">
+                <li class="active"><a href="index.html">HOME</a></li>
+                <li><a href="services.html">MY PLANS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
+
         <div id="intro">
-            <img src="images/dmm.logo.white.png" alt="DMM Logo" class="intro-logo" id="anim-logo">
-            <h1 id="anim-title"><span class="intro-line line-1">DMM <br>TRAINER</span></h1>
-            <img src="images/us-flag.svg" alt="USA flag" class="intro-flag" id="anim-flag" />
-            <p id="anim-subtitle"><span class="intro-line line-3">STRONGER + FASTER = WINNER</span></p>
+            <img src="images/dmm.logo.white.png" alt="Logo" class="intro-logo" id="anim-logo">
+            <h1><span class="intro-line line-1">DMM <br>TRAINER</span></h1>
+            <img src="images/us-flag.svg" alt="Flag" class="intro-flag" id="anim-flag">
+            <p><span class="intro-line line-3">STRONGER + FASTER = WINNER</span></p>
         </div>
 
         <div id="wrapper">
+            
+            <section class="bio-section-wrapper">
+                
+                <div class="bio-stack-container">
+                    <div class="bio-integrated-card">
+                        
+                        <div class="bio-photo-col">
+                            <img src="images/DMM.DIEGO.png" alt="Diego Martin Mendez, DMM Trainer">
+                        </div>
 
-            <div class="plans-intro-container">
-                <img src="images/DMM.DIEGO.png" alt="Diego Martin Mendez">
-                <div class="plans-intro-text-wrapper">
-                    <p class="plans-intro"><span>Welcome to DMM trainer,<br> by Diego Martin Mendez</span></p>
-                    
-                    <p class="plans-intro"><span class="neon-bullet">◆</span> Online Personal Training</p>
-                    <p class="plans-intro"><span class="neon-bullet">◆</span> Licensed in Sport and Physical Activity Sciences</p>
-                    <p class="plans-intro"><span class="neon-bullet">◆</span> Specialized in Racket Sports</p>
-                </div>
-            </div>
+                        <div class="bio-content-col">
+                            
+                            <h2 class="welcome-title-tech">
+                                <span class="sub">Welcome to</span>
+                                DMM TRAINER,
+                                <span class="highlight">BY DIEGO MARTIN MENDEZ</span>
+                            </h2>
 
-            <div class="my-plans-button-container">
-                <button class="btn-mega" onclick="window.location.href='services.html'">my plans</button>
-            </div>
+                            <ul class="tech-specs-list">
+                                
+                                <li class="tech-spec-item">
+                                    <div class="spec-icon-box">
+                                        <img src="images/fitness_center_36dp_CCFF00_FILL0_wght400_GRAD0_opsz40.svg" alt="Icon" class="spec-svg-tech">
+                                    </div>
+                                    <div class="spec-text">
+                                        Personalized Online Coaching
+                                    </div>
+                                </li>
+
+                                <li class="tech-spec-item">
+                                    <div class="spec-icon-box">
+                                        <img src="images/school_36dp_CCFF00_FILL0_wght400_GRAD0_opsz40.svg" alt="Icon" class="spec-svg-tech">
+                                    </div>
+                                    <div class="spec-text">
+                                        Degree in Sport Sciences
+                                    </div>
+                                </li>
+
+                                <li class="tech-spec-item">
+                                    <div class="spec-icon-box">
+                                        <img src="images/sports_tennis_36dp_CCFF00_FILL0_wght400_GRAD0_opsz40.svg" alt="Icon" class="spec-svg-tech">
+                                    </div>
+                                    <div class="spec-text">
+                                        Racket Sports Specialist
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div> </div> <button class="btn-mega" onclick="window.location.href='services.html'">INITIATE PLAN</button>
+                
+                </div> </section>
 
             <section class="testimonials-section">
-                <h2 class="testimonials-title">WHAT MY CLIENTS SAY</h2>
+                <h2 style="text-align:center; color:white; font-size:2.5rem; margin-bottom:50px; font-weight:900; letter-spacing:2px;">WHAT MY CLIENTS SAY</h2>
                 <div class="testimonials-track">
                     <div class="testimonial-card">
-                        <div class="testimonial-text-wrapper">
-                            <p class="testimonial-quote">"Since I started with Diego, my transformation has been incredible. His dedication and professionalism are unmatched."</p>
-                            <h4 class="testimonial-name">Miguel Briega</h4>
+                        <div class="text-wrapper">
+                            <p style="color:var(--neon-green); font-style:italic; font-size:1.3rem;">"Since I started with Diego, my transformation has been incredible."</p>
+                            <h4 style="color:white; text-transform:uppercase;">Miguel Briega</h4>
                         </div>
-                        <img src="images/BRIEGA.JPG" alt="" class="testimonial-photo">
+                        <img src="images/BRIEGA.JPG" class="testimonial-photo">
                     </div>
                     <div class="testimonial-card">
-                        <div class="testimonial-text-wrapper">
-                            <p class="testimonial-quote">"Diego's hybrid program adapts perfectly to my lifestyle. In just a few months, I've seen remarkable changes."</p>
-                            <h4 class="testimonial-name">Guillermo Cagigas</h4>
+                        <div class="text-wrapper">
+                            <p style="color:var(--neon-green); font-style:italic; font-size:1.3rem;">"Diego's hybrid program adapts perfectly to my lifestyle."</p>
+                            <h4 style="color:white; text-transform:uppercase;">Guillermo Cagigas</h4>
                         </div>
-                        <img src="images/CAGIGAS.JPG" alt="" class="testimonial-photo">
+                        <img src="images/CAGIGAS.JPG" class="testimonial-photo">
                     </div>
                     <div class="testimonial-card">
-                        <div class="testimonial-text-wrapper">
-                            <p class="testimonial-quote">"Diego is an exceptional trainer. His attention to detail and continuous motivation is the best investment in my health."</p>
-                            <h4 class="testimonial-name">Marta Morga</h4>
+                        <div class="text-wrapper">
+                            <p style="color:var(--neon-green); font-style:italic; font-size:1.3rem;">"Diego is an exceptional trainer. His attention to detail is the best investment."</p>
+                            <h4 style="color:white; text-transform:uppercase;">Marta Morga</h4>
                         </div>
-                        <img src="images/MARTA.JPG" alt="" class="testimonial-photo">
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-text-wrapper">
-                            <p class="testimonial-quote">"Since I started with Diego, my transformation has been incredible. His dedication and professionalism are unmatched."</p>
-                            <h4 class="testimonial-name">Miguel Briega</h4>
-                        </div>
-                        <img src="images/BRIEGA.JPG" alt="" class="testimonial-photo">
+                        <img src="images/MARTA.JPG" class="testimonial-photo">
                     </div>
                     <div class="testimonial-card">
-                        <div class="testimonial-text-wrapper">
-                            <p class="testimonial-quote">"Diego's hybrid program adapts perfectly to my lifestyle. In just a few months, I've seen remarkable changes."</p>
-                            <h4 class="testimonial-name">Guillermo Cagigas</h4>
+                        <div class="text-wrapper">
+                            <p style="color:var(--neon-green); font-style:italic; font-size:1.3rem;">"Since I started with Diego, my transformation has been incredible."</p>
+                            <h4 style="color:white; text-transform:uppercase;">Miguel Briega</h4>
                         </div>
-                        <img src="images/CAGIGAS.JPG" alt="" class="testimonial-photo">
+                        <img src="images/BRIEGA.JPG" class="testimonial-photo">
                     </div>
                     <div class="testimonial-card">
-                        <div class="testimonial-text-wrapper">
-                            <p class="testimonial-quote">"Diego is an exceptional trainer. His attention to detail and continuous motivation is the best investment in my health."</p>
-                            <h4 class="testimonial-name">Marta Morga</h4>
+                        <div class="text-wrapper">
+                            <p style="color:var(--neon-green); font-style:italic; font-size:1.3rem;">"Diego's hybrid program adapts perfectly to my lifestyle."</p>
+                            <h4 style="color:white; text-transform:uppercase;">Guillermo Cagigas</h4>
                         </div>
-                        <img src="images/MARTA.JPG" alt="" class="testimonial-photo">
+                        <img src="images/CAGIGAS.JPG" class="testimonial-photo">
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="text-wrapper">
+                            <p style="color:var(--neon-green); font-style:italic; font-size:1.3rem;">"Diego is an exceptional trainer. His attention to detail is the best investment."</p>
+                            <h4 style="color:white; text-transform:uppercase;">Marta Morga</h4>
+                        </div>
+                        <img src="images/MARTA.JPG" class="testimonial-photo">
                     </div>
                 </div>
             </section>
 
             <section class="gallery-section">
-                <h2 class="testimonials-title">GALLERY</h2>
-                
+                <h2 style="text-align:center; font-size:4rem; margin-bottom:50px; color:#ccff00; font-weight:900;">GALLERY</h2>
                 <div class="gallery-container">
                     <div class="gallery-track left">
-                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
-                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
-                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
-                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
-                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
-                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
-                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
-                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG"></div>
+                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG"></div>
+                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG"></div>
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG"></div>
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG"></div>
+                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG"></div>
+                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG"></div>
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG"></div>
                     </div>
-
                     <div class="gallery-track right">
-                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
-                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
-                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
-                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
-                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG" alt="Dedication"></div>
-                        <div class="gallery-item"><img src="images/1bbe77f4-dd1e-4185-bd14-d7415034269d.JPG" alt="Gym"></div>
-                        <div class="gallery-item"><img src="images/17777005-edbc-4a42-a785-619b506795bc.JPG" alt="Results"></div>
-                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG" alt="Training"></div>
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG"></div>
+                        <div class="gallery-item"><img src="images/marta.jpg"></div>
+                        <div class="gallery-item"><img src="images/padeledge.jpeg"></div>
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG"></div>
+                        <div class="gallery-item"><img src="images/2637bb60-cb23-4ec7-ad64-1f761e0d978d.JPG"></div>
+                        <div class="gallery-item"><img src="images/marta.jpg"></div>
+                        <div class="gallery-item"><img src="images/padeledge.jpeg"></div>
+                        <div class="gallery-item"><img src="images/02d11b6e-21bd-4b5d-95ce-9a7b72f33ee5.JPG"></div>
                     </div>
                 </div>
             </section>
 
             <footer id="footer">
                 <section>
-                    <h2 style="letter-spacing:3px; font-size:2rem;">GET IN TOUCH</h2>
-                    <form method="post" action="https://formsubmit.co/dmmpersonaltrainer@gmail.com">
-                        <input type="text" name="name" placeholder="Name" required/>
-                        <input type="email" name="email" placeholder="Email" required/>
-                        <textarea name="message" placeholder="Message" rows="4" required></textarea>
-                        <input type="submit" value="Send Message" class="button" style="width:auto;"/>
+                    <h3>Send a Message</h3>
+                    <form method="post" action="#">
+                        <div class="fields">
+                            <div class="field">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" />
+                            </div>
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" />
+                            </div>
+                            <div class="field">
+                                <label for="message">Message</label>
+                                <textarea name="message" id="message" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="SEND MESSAGE" /></li>
+                        </ul>
                     </form>
                 </section>
-                <section class="split contact" style="font-size: 1.2rem;">
-                    <div style="margin-top: 30px;">
-                        <h3>Email</h3>
-                        <h3 style="margin-top:0;"><a href="mailto:dmmpersonaltrainer@gmail.com" style="color:var(--neon-green); text-decoration:none;">dmmpersonaltrainer@gmail.com</a></h3>
-                        
-                        <h3 style="margin-top:40px;">Phone</h3>
-                        <h3 style="margin-top:0;"><a href="tel:+34628801736" style="color:var(--neon-green); text-decoration:none;">+34 628 801 736</a></h3>
-                        
-                        <p style="margin-top: 60px; opacity:0.6; font-size: 0.9rem; color:white;">© DMM TRAINER 2026</p>
+                
+                <section class="contact-info">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone-alt" style="color: var(--neon-green); margin-right: 10px;"></i> <a href="tel:+34628801736">+34 628 801 736</a></p>
+                    <p><i class="fas fa-envelope" style="color: var(--neon-green); margin-right: 10px;"></i> <a href="mailto:dmmpersonaltrainer@gmail.com">dmmpersonaltrainer@gmail.com</a></p>
+                    
+                    <h3 style="margin-top: 40px;">Follow Me</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/dmm.trainer/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/34628801736" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </section>
             </footer>
-        </div>
 
-        <script>
-            const introSection = document.getElementById('intro');
-            const logo = document.getElementById('anim-logo');
-            const title = document.getElementById('anim-title');
-            const flag = document.getElementById('anim-flag');
-            const subtitle = document.getElementById('anim-subtitle');
+            <div id="copyright">
+                &copy; DMM TRAINER 2026. ALL RIGHTS RESERVED.
+            </div>
 
+        </div> <script>
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer click fuera
+            document.addEventListener('click', (e) => {
+                if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    hamburgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+
+            // Lógica Scroll Parallax
             window.addEventListener('scroll', () => {
                 let scrollY = window.scrollY;
-                let windowHeight = window.innerHeight;
-                let fadeRate = scrollY / (windowHeight * 0.65); 
-                let newOpacity = 1 - fadeRate;
-                if (newOpacity < 0) newOpacity = 0; if (newOpacity > 1) newOpacity = 1;
-
-                introSection.style.setProperty('--intro-opacity', newOpacity);
-
-                if (scrollY < windowHeight) {
-                    let logoScale = 1 + (scrollY * 0.005); 
-                    logo.style.transform = `scale(${logoScale})`; logo.style.opacity = newOpacity;
-                    let parallaxSpeed = scrollY * 0.3;
-                    title.style.transform = `translateY(${parallaxSpeed}px)`; title.style.opacity = newOpacity;
-                    flag.style.transform = `translateY(${parallaxSpeed}px)`; flag.style.opacity = newOpacity;
-                    subtitle.style.transform = `translateY(${parallaxSpeed}px)`; subtitle.style.opacity = newOpacity;
+                let wh = window.innerHeight;
+                let opacity = 1 - (scrollY / (wh * 0.7));
+                if (opacity < 0) opacity = 0;
+                
+                const intro = document.getElementById('intro');
+                if(intro) intro.style.setProperty('--intro-opacity', opacity);
+                
+                const animLogo = document.getElementById('anim-logo');
+                if(animLogo) {
+                    let scale = 1 + (scrollY * 0.002);
+                    animLogo.style.transform = `scale(${scale})`;
                 }
             });
         </script>
+
     </body>
 </html>
